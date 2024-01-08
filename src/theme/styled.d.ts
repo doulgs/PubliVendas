@@ -6,11 +6,7 @@ declare module "styled-components/native" {
       Primary: string;
       Secondary: string;
 
-      Text: string;
-      TextFill: string;
-      PlaceholderColor: string;
-
-      background: {
+      Background: {
         50: string;
         100: string;
         200: string;
@@ -24,18 +20,13 @@ declare module "styled-components/native" {
       };
     };
     colorBase: {
-      black: string;
-      white: string;
+      Black: string;
+      White: string;
 
-      success: string;
-      info: string;
-      alert: string;
-      error: string;
-    };
-    spaces: {
-      space: string;
-      fontSize: string;
-      borderRadius: string;
+      Success: string;
+      Info: string;
+      Alert: string;
+      Error: string;
     };
   }
 }

@@ -3,11 +3,7 @@ export const THEME = {
     Primary: "#0A3750",
     Secondary: "#0094D8",
 
-    Text: "#171717",
-    TextFill: "#b2b2b2",
-    PlaceholderColor: "#8c8c8c",
-
-    background: {
+    Background: {
       50: "#f0f4ff",
       100: "#d7d6dc",
       200: "#bcbac2",
@@ -21,17 +17,12 @@ export const THEME = {
     },
   },
   colorBase: {
-    black: "#0c0c13",
-    white: "#ffffff",
+    Black: "#121212",
+    White: "#ffffff",
 
-    success: "#01AF5b",
-    info: "#0288d1",
-    alert: "#ced67b",
-    error: "#f67171",
-  },
-  spaces: {
-    space: "16px",
-    fontSize: "16px",
-    borderRadius: "8px",
+    Success: "#4caf50",
+    Info: "#0288d1",
+    Alert: "#ced67b",
+    Error: "#ff5252",
   },
 };
