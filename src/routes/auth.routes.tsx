@@ -7,7 +7,11 @@ const Stack = createNativeStackNavigator();
 
 function AuthRoutes() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name="SignIn" component={SignIn} />
     </Stack.Navigator>
   );
