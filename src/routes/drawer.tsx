@@ -1,14 +1,22 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import Home from "../pages/Home";
+import Pedidos from "../pages/Pedidos";
+import Clientes from "../pages/Clientes";
+import Produtos from "../pages/Produtos";
+import Config from "../pages/Config";
 
 const Drawer = createDrawerNavigator();
 
-export default function DrawerScreens() {
+function DrawerScreens() {
   return (
-    <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Home" component={Home} />
+    <Drawer.Navigator initialRouteName="Pedidos">
+      <Drawer.Screen name="Pedidos" component={Pedidos} />
+      <Drawer.Screen name="Clientes" component={Clientes} />
+      <Drawer.Screen name="Produtos" component={Produtos} />
+      <Drawer.Screen name="Config" component={Config} />
     </Drawer.Navigator>
   );
 }
+
+export default DrawerScreens;
