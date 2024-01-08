@@ -1,14 +1,19 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
+
 import Routes from "./src/routes";
+
+import { THEME } from "./src/theme";
+import { ThemeProvider } from "styled-components/native";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" />
-      <Routes />
-    </NavigationContainer>
+    <ThemeProvider theme={THEME}>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <Routes />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
