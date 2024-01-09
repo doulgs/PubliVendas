@@ -1,17 +1,18 @@
 import React from "react";
+import { useAuth } from "../context";
+
 import { AppRoutes } from "./app.routes";
 import { AuthRoutes } from "./auth.routes";
 import Laoding from "../components/Loading";
 
 const Routes = () => {
-  const signed = false;
-  const isLoading = false;
+  const { isAuthenticated, loadingAuth } = useAuth();
 
-  if (isLoading) {
+  if (loadingAuth) {
     return <Laoding />;
   }
 
-  return signed ? <AppRoutes /> : <AuthRoutes />;
+  return isAuthenticated ? <AppRoutes /> : <AuthRoutes />;
 };
 
 export default Routes;

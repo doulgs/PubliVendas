@@ -3,6 +3,7 @@ import { useState, useContext, createContext } from "react";
 interface AuthContextProps {
   user: UserProps | null;
   isAuthenticated: boolean;
+  loadingAuth: boolean;
   signIn: Function;
   signOut: Function;
 }
@@ -18,9 +19,12 @@ export const AuthContext = createContext<AuthContextProps>(
 
 export const AuthProvaider = ({ children }: any) => {
   const [user, setUser] = useState<UserProps | null>(null);
+  const [loadingAuth, setLoadingAuth] = useState<true | false>(false);
 
-  async function signIn({ name, password }: UserProps) {
-    console.log(name, password);
+  async function signIn(name: string, password: string) {
+    setLoadingAuth(true);
+    setUser({ name, password });
+    setLoadingAuth(false);
   }
 
   async function signOut() {
@@ -29,7 +33,7 @@ export const AuthProvaider = ({ children }: any) => {
 
   return (
     <AuthContext.Provider
-      value={{ signIn, user, isAuthenticated: !!user, signOut }}
+      value={{ signIn, user, isAuthenticated: !!user, loadingAuth, signOut }}
     >
       {children}
     </AuthContext.Provider>

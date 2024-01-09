@@ -5,13 +5,13 @@ import { ButtonArea, ButtonText, Container } from "./styles";
 const Pedidos: React.FC = () => {
   const navigation = useNavigation();
   async function handleNav() {
-    navigation.navigate("Setting");
+    navigation.navigate("Clientes");
   }
 
   return (
     <Container>
       <ButtonArea onPress={handleNav}>
-        <ButtonText>Ir Para Configuração</ButtonText>
+        <ButtonText>Ir Para Clientes</ButtonText>
       </ButtonArea>
     </Container>
   );

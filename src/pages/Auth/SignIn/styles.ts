@@ -5,7 +5,7 @@ const isAndroid = Platform.OS === "android";
 
 export const Background = styled.SafeAreaView`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.Background[50]};
+  //background-color: ${(props) => props.theme.colors.Background[50]};
   padding-top: ${isAndroid ? `${StatusBar.currentHeight}px` : "0"};
 `;
 
@@ -41,23 +41,7 @@ export const Input = styled.TextInput.attrs({
   margin-bottom: 15px;
 `;
 
-export const SubmitButton = styled.TouchableOpacity`
-  width: 90%;
-  height: 45px;
-  border-radius: 8px;
-  background-color: ${(props) => props.theme.colors.Primary};
-  margin-top: 10px;
-  align-items: center;
-  justify-content: center;
-`;
-export const SubmitText = styled.Text`
-  font-size: 20px;
+export const Copyright = styled.Text`
+  margin: 4px;
   color: ${(props) => props.theme.colorBase.White};
 `;
-export const Link = styled.TouchableOpacity`
-  margin-top: 10px;
-`;
-export const LinkText = styled.Text`
-  color: ${(props) => props.theme.colorBase.Black};
-`;
-export const ModalAPI = styled.Modal``;
