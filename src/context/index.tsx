@@ -1,4 +1,5 @@
-import { useState, useContext, createContext } from "react";
+import { useState, useContext, createContext, useEffect } from "react";
+import { getRealm } from "../database/realm";
 
 interface AuthContextProps {
   user: UserProps | null;
@@ -9,8 +10,24 @@ interface AuthContextProps {
 }
 
 interface UserProps {
-  name: string;
-  password: string;
+  Login: string;
+  Password: string;
+  Ativo: boolean;
+  EhGerente: boolean;
+  EhAdministrador: boolean;
+  token: string;
+}
+
+interface UserRealProps {
+  Handle: string;
+  Login: string;
+  Password: string;
+  Ativo: boolean;
+  EhGerente: boolean;
+  EhAdministrador: boolean;
+  token: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
 export const AuthContext = createContext<AuthContextProps>(
@@ -21,10 +38,34 @@ export const AuthProvaider = ({ children }: any) => {
   const [user, setUser] = useState<UserProps | null>(null);
   const [loadingAuth, setLoadingAuth] = useState<true | false>(false);
 
-  async function signIn(name: string, password: string) {
+  useEffect(() => {
+    //handleInitialization();
+  }, []);
+
+  async function signIn(login: string, password: string) {
+    const realm = await getRealm();
     setLoadingAuth(true);
-    setUser({ name, password });
-    setLoadingAuth(false);
+
+    try {
+      const response = realm
+        .objects("UserSchema")
+        .filtered(`Login = '${login}'`, `Password = '${password}'`)[0];
+      if (response.length !== 0) {
+        setUser({
+          Login: response.Login as string,
+          Password: response.Password as string,
+          Ativo: response.Ativo as boolean,
+          EhGerente: response.EhGerente as boolean,
+          EhAdministrador: response.EhAdministrador as boolean,
+          token: response.token as string,
+        });
+      }
+    } catch (error) {
+    } finally {
+      setLoadingAuth(false);
+      console.log(user);
+      //TODO dar sequencia nas validacoes
+    }
   }
 
   async function signOut() {

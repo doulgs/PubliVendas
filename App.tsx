@@ -8,12 +8,15 @@ import { ThemeProvider } from "styled-components/native";
 import Routes from "./src/routes";
 import { THEME } from "./src/theme";
 
+import Initialization from "./src/utils/Initialization";
+
 export default function App() {
   return (
     <ThemeProvider theme={THEME}>
       <AuthProvaider>
         <NavigationContainer>
           <StatusBar style="light" />
+          <Initialization />
           <Routes />
         </NavigationContainer>
       </AuthProvaider>
