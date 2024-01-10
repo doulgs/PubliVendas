@@ -1,5 +1,6 @@
 import React from "react";
-
+import DeviceInfo from "react-native-device-info";
+import * as Device from "expo-device";
 import {
   Container,
   Content,
@@ -16,6 +17,31 @@ import { useTheme } from "styled-components/native";
 
 const Settings: React.FC = () => {
   const { colorBase } = useTheme();
+
+  const [deviceId, setDeviceId] = React.useState<string | null>("null");
+  const [plataforma, setPlataforma] = React.useState<string | null>("null");
+  const [modelo, setModelo] = React.useState<string | null>("null");
+  const [versao, setVersao] = React.useState<string | null>("null");
+
+  React.useEffect(() => {
+    async function getPlataforma() {
+      const uniqueId = await DeviceInfo.getUniqueId();
+      setDeviceId(uniqueId);
+
+      const Plataforma = Device.osName;
+      setPlataforma(Plataforma);
+
+      const Modelo = Device.deviceName;
+      setModelo(Modelo);
+
+      const Versao = Device.osVersion;
+      setVersao(Versao);
+
+      //console.log(uniqueId, Plataforma, Modelo, Versao);
+    }
+
+    getPlataforma();
+  }, []);
   return (
     <Container>
       <Content>
@@ -32,19 +58,19 @@ const Settings: React.FC = () => {
       </ContentTitle>
       <ContentTexto>
         <TextHelper>UUID:</TextHelper>
-        <Texto>TESTE</Texto>
+        <Texto>{deviceId}</Texto>
       </ContentTexto>
       <ContentTexto>
         <TextHelper>Plataforma:</TextHelper>
-        <Texto>TESTE</Texto>
+        <Texto>{plataforma}</Texto>
       </ContentTexto>
       <ContentTexto>
         <TextHelper>Modelo:</TextHelper>
-        <Texto>TESTE</Texto>
+        <Texto>{modelo}</Texto>
       </ContentTexto>
       <ContentTexto>
         <TextHelper>Versão:</TextHelper>
-        <Texto>TESTE</Texto>
+        <Texto>{versao}</Texto>
       </ContentTexto>
 
       <ContentButton>
