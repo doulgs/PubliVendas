@@ -1,13 +1,15 @@
 import React from "react";
-
+import { useNavigation } from "@react-navigation/native";
 import { AreaInput, Background, Container, Copyright, Logo } from "./styles";
 
-import Button from "../../../components/Button";
-import Input from "../../../components/Input";
+import Button from "../../../Helpers/Button";
+import Input from "../../../Helpers/Input";
 import Gradient from "../../../components/Gradient";
 import { useAuth } from "../../../context";
 
 const SignIn: React.FC = () => {
+  const navigation = useNavigation();
+
   const { signIn } = useAuth();
   const [usuario, setUsuario] = React.useState("");
   const [senha, setSenha] = React.useState("");
@@ -20,6 +22,10 @@ const SignIn: React.FC = () => {
       setUsuario("");
       setSenha("");
     }
+  }
+
+  function handleSettings() {
+    navigation.navigate("Settings");
   }
 
   return (
@@ -42,6 +48,7 @@ const SignIn: React.FC = () => {
                 iconName="user"
               />
             </AreaInput>
+
             <AreaInput>
               <Input
                 value={senha}
@@ -58,6 +65,11 @@ const SignIn: React.FC = () => {
               title="Acessar"
               colorBackground="#d7d6dc"
               onPress={() => handleSubmit()}
+            />
+            <Button
+              title="Configurações"
+              colorBackground="#d7d6dc"
+              onPress={() => handleSettings()}
             />
           </Container>
         </Background>

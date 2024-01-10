@@ -9,7 +9,7 @@ interface Props extends TextInputProps {
   iconColor?: string;
 }
 
-const Input: React.FC<Props> = ({
+const InputHelper: React.FC<Props> = ({
   iconVisible = false,
   iconName = "user",
   iconColor = "#3d3b43",
@@ -25,4 +25,4 @@ const Input: React.FC<Props> = ({
   );
 };
 
-export default Input;
+export default InputHelper;

@@ -27,18 +27,7 @@ export const Logo = styled.Image`
 
 export const AreaInput = styled.View`
   flex-direction: row;
-`;
-
-export const Input = styled.TextInput.attrs({
-  placeholderTextColor: "#8c8c8c",
-})`
-  background-color: ${(props) => props.theme.colors.Background[100]};
-  width: 90%;
-  border-radius: 8px;
-  font-size: 17px;
-  padding: 10px;
-  color: ${(props) => props.theme.colorBase.White};
-  margin-bottom: 15px;
+  margin: 0px 5%;
 `;
 
 export const Copyright = styled.Text`

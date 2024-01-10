@@ -15,7 +15,7 @@ export default function App() {
     <ThemeProvider theme={THEME}>
       <AuthProvaider>
         <NavigationContainer>
-          <StatusBar style="light" />
+          <StatusBar style="auto" />
           <Initialization />
           <Routes />
         </NavigationContainer>

@@ -3,7 +3,11 @@ import uuid from "react-native-uuid";
 import { getRealm } from "../database/realm";
 import { Alert } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
+
 const Initialization = () => {
+  const navigation = useNavigation();
+
   useEffect(() => {
     InitializationTable();
   }, []);
@@ -26,7 +30,8 @@ const Initialization = () => {
               created_at: new Date(),
               updated_at: new Date(),
             });
-            Alert.alert("Sync", `Tabela de usuarios criada com sucesso `);
+            console.log("Sync", `Tabela de usuarios criada com sucesso `);
+            navigation.navigate("Settings");
           });
         } catch (error) {
           console.log("Erro na criação da tabela usuario -->", error);

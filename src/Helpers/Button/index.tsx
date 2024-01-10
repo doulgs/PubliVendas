@@ -2,16 +2,16 @@ import React from "react";
 import { TouchableOpacityProps } from "react-native";
 
 import { Container, Text } from "./styles";
-import Laoding from "../Loading";
+import Laoding from "../../components/Loading";
 
 interface Props extends TouchableOpacityProps {
-  isLoading: boolean;
+  isLoading?: boolean;
   title: string;
   colorTitle?: string;
   colorBackground?: string;
 }
 
-const Button: React.FC<Props> = ({
+const ButtonHelper: React.FC<Props> = ({
   isLoading = false,
   title,
   colorTitle = "#000000",
@@ -29,4 +29,4 @@ const Button: React.FC<Props> = ({
   );
 };
 
-export default Button;
+export default ButtonHelper;
