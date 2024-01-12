@@ -12,7 +12,7 @@ const Routes = () => {
     return <Laoding />;
   }
 
-  return isAuthenticated ? <AppRoutes /> : <AuthRoutes />;
+  return !isAuthenticated ? <AppRoutes /> : <AuthRoutes />;
 };
 
 export default Routes;

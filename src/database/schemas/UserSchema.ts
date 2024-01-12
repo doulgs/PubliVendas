@@ -2,13 +2,12 @@ export const UserSchema = {
   name: "UserSchema",
 
   properties: {
-    Handle: "string",
+    Handle: "int",
+    Nome: "string",
     Login: "string",
     Password: "string",
-    Ativo: "bool",
-    EhGerente: "bool",
-    EhAdministrador: "bool",
-    token: "string",
+    Ativo: "int",
+    EhAdministrador: "string",
     created_at: "date",
     updated_at: "date",
   },

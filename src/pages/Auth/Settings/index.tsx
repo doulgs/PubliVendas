@@ -14,19 +14,32 @@ import TextHelper from "../../../Helpers/Text";
 import InputHelper from "../../../Helpers/Input";
 import ButtonHelper from "../../../Helpers/Button";
 import { useTheme } from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
+import { useAuth } from "../../../context";
+import uuid from "react-native-uuid";
 
 const Settings: React.FC = () => {
+  const { registerMobile } = useAuth();
   const { colorBase } = useTheme();
+  const navigation = useNavigation();
 
+  const [activationKey, setActivationKey] = React.useState("");
   const [deviceId, setDeviceId] = React.useState<string | null>("null");
   const [plataforma, setPlataforma] = React.useState<string | null>("null");
   const [modelo, setModelo] = React.useState<string | null>("null");
   const [versao, setVersao] = React.useState<string | null>("null");
 
+  const handleInit = async () => {
+    registerMobile(activationKey, deviceId, plataforma, modelo, versao);
+    //navigation.navigate("SignIn");
+    navigation.navigate("SignIn");
+  };
+
   React.useEffect(() => {
     async function getPlataforma() {
       const uniqueId = await DeviceInfo.getUniqueId();
       setDeviceId(uniqueId);
+      //setDeviceId("25");
 
       const Plataforma = Device.osName;
       setPlataforma(Plataforma);
@@ -42,6 +55,7 @@ const Settings: React.FC = () => {
 
     getPlataforma();
   }, []);
+
   return (
     <Container>
       <Content>
@@ -51,6 +65,8 @@ const Settings: React.FC = () => {
           iconName="edit"
           autoCapitalize="none"
           placeholder="Digite aqui a chave de ativação da empresa..."
+          value={activationKey}
+          onChangeText={(t) => setActivationKey(t)}
         />
       </Content>
       <ContentTitle>
@@ -78,11 +94,13 @@ const Settings: React.FC = () => {
           title="Salvar Configuração"
           colorTitle={colorBase.White}
           colorBackground={colorBase.Success}
+          onPress={handleInit}
         />
         <ButtonHelper
           title="Limpar base de dados"
           colorTitle={colorBase.White}
           colorBackground={colorBase.Error}
+          onPress={() => navigation.navigate("SignIn")}
         />
       </ContentButton>
     </Container>
