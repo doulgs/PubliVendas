@@ -4,90 +4,107 @@ import {
   DrawerContentScrollView,
   DrawerItem,
 } from "@react-navigation/drawer";
-import { View, StyleSheet, Linking } from "react-native";
-import { Avatar, Title, Caption } from "react-native-paper";
+import {
+  View,
+  StyleSheet,
+  Linking,
+  StatusBar,
+  TouchableOpacity,
+} from "react-native";
+import {
+  Avatar,
+  Title,
+  Caption,
+  Paragraph,
+  Drawer,
+  Text,
+  TouchableRipple,
+  Switch,
+} from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useTheme } from "styled-components/native";
 
 type CustomDrawerContentProps = DrawerContentComponentProps;
 
+const statusBarHeight = StatusBar.currentHeight;
+
 const CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
+  const { colors } = useTheme();
   return (
-    <View style={{ flex: 1 }}>
-      <DrawerContentScrollView {...props}>
-        <View style={styles.drawerContent}>
-          <View style={styles.userInfoSection}>
-            <View style={{ flexDirection: "row", marginTop: 15 }}>
-              <Avatar.Image
-                source={require("../assets/images/UserPublisoft.png")}
-                size={50}
-              />
-              <View style={{ marginLeft: 15, flexDirection: "column" }}>
-                <Title style={styles.title}>Publisoft</Title>
-                <Caption style={styles.caption}>@Publisoft</Caption>
+    <View style={{ flex: 1, backgroundColor: "#0A3750" }}>
+      <DrawerContentScrollView style={styles.headerDrawerSection} {...props}>
+        <View style={styles.bodyDrawerSection}>
+          <View style={styles.drawerContent}>
+            <View style={styles.userInfoSection}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginTop: 15,
+                  marginBottom: 15,
+                }}
+              >
+                <Avatar.Image
+                  source={{
+                    uri: "https://api.adorable.io/avatars/50/abott@adorable.png",
+                  }}
+                  size={50}
+                />
+                <View style={{ marginLeft: 15, flexDirection: "column" }}>
+                  <Title style={styles.title}>Publisoft</Title>
+                  <Caption style={styles.caption}>@Publisoft</Caption>
+                </View>
               </View>
             </View>
-          </View>
 
-          <View style={styles.drawerSection}>
-            <DrawerItem
-              {...props}
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="format-list-text"
-                  color={color}
-                  size={size}
-                />
-              )}
-              label="Pedidos"
-              onPress={() => {
-                props.navigation.navigate("Pedidos");
-              }}
-            />
-            <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="account-details-outline"
-                  color={color}
-                  size={size}
-                />
-              )}
-              label="Clientes"
-              onPress={() => {
-                props.navigation.navigate("Clientes");
-              }}
-            />
-            <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="bookmark-box-multiple-outline"
-                  color={color}
-                  size={size}
-                />
-              )}
-              label="Produtos"
-              onPress={() => {
-                props.navigation.navigate("Produtos");
-              }}
-            />
-
-            {/* <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="application-cog-outline"
-                  color={color}
-                  size={size}
-                />
-              )}
-              label="Configurações"
-              onPress={() => {
-                props.navigation.navigate("Config");
-              }}
-            /> */}
+            <View style={styles.drawerSection}>
+              <DrawerItem
+                style={styles.itemMenuStyle}
+                icon={({ color, size }) => (
+                  <MaterialCommunityIcons
+                    name="format-list-text"
+                    color={color}
+                    size={size}
+                  />
+                )}
+                label="Pedidos"
+                onPress={() => {
+                  props.navigation.navigate("Pedidos");
+                }}
+              />
+              <DrawerItem
+                style={styles.itemMenuStyle}
+                icon={({ color, size }) => (
+                  <MaterialCommunityIcons
+                    name="account-details-outline"
+                    color={color}
+                    size={size}
+                  />
+                )}
+                label="Clientes"
+                onPress={() => {
+                  props.navigation.navigate("Clientes");
+                }}
+              />
+              <DrawerItem
+                style={styles.itemMenuStyle}
+                icon={({ color, size }) => (
+                  <MaterialCommunityIcons
+                    name="bookmark-box-multiple-outline"
+                    color={color}
+                    size={size}
+                  />
+                )}
+                label="Produtos"
+                onPress={() => {
+                  props.navigation.navigate("Produtos");
+                }}
+              />
+            </View>
           </View>
         </View>
       </DrawerContentScrollView>
 
-      <View style={styles.bottomDrawerSection}>
+      <View style={styles.footerDrawerSection}>
         <DrawerItem
           icon={({ color, size }) => (
             <MaterialCommunityIcons
@@ -120,20 +137,37 @@ const CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
 };
 
 const styles = StyleSheet.create({
+  headerDrawerSection: {
+    flex: 1,
+    marginTop: statusBarHeight,
+    backgroundColor: "#f0f4ff",
+  },
+  bodyDrawerSection: {
+    flex: 1,
+    marginTop: -38,
+  },
+  footerDrawerSection: {
+    backgroundColor: "#f0f4ff",
+    borderTopColor: "#dadada",
+    borderTopWidth: 1,
+  },
   drawerContent: {
     flex: 1,
   },
   userInfoSection: {
     paddingLeft: 20,
+    backgroundColor: "#0A3750",
   },
   title: {
     fontSize: 16,
     marginTop: 3,
     fontWeight: "bold",
+    color: "#f0f4ff",
   },
   caption: {
     fontSize: 14,
     lineHeight: 14,
+    color: "#dadada",
   },
   row: {
     marginTop: 20,
@@ -150,16 +184,15 @@ const styles = StyleSheet.create({
     marginRight: 3,
   },
   drawerSection: {
-    marginTop: 15,
-    marginBottom: 15,
-    borderTopColor: "#f4f4f4",
-    borderBottomColor: "#f4f4f4",
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    marginTop: 8,
   },
+  itemMenuStyle: {
+    backgroundColor: "#cfd2e4",
+  },
+  itemTextMenuStyle: {},
   bottomDrawerSection: {
     marginBottom: 15,
-    borderTopColor: "#f4f4f4",
+    borderTopColor: "#f0f4ff",
     borderTopWidth: 1,
   },
   preference: {
