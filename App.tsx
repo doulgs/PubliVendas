@@ -2,6 +2,7 @@ import "react-native-gesture-handler";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { AuthProvaider } from "./src/context";
+import { PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { ThemeProvider } from "styled-components/native";
@@ -14,11 +15,13 @@ export default function App() {
   return (
     <ThemeProvider theme={THEME}>
       <AuthProvaider>
-        <NavigationContainer>
-          <StatusBar style="auto" translucent={false} />
-          {/* <Initialization /> */}
-          <Routes />
-        </NavigationContainer>
+        <PaperProvider>
+          <NavigationContainer>
+            <StatusBar style="auto" />
+            {/* <Initialization /> */}
+            <Routes />
+          </NavigationContainer>
+        </PaperProvider>
       </AuthProvaider>
     </ThemeProvider>
   );
