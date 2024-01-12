@@ -70,7 +70,7 @@ const CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
               }}
             />
 
-            <DrawerItem
+            {/* <DrawerItem
               icon={({ color, size }) => (
                 <MaterialCommunityIcons
                   name="application-cog-outline"
@@ -82,7 +82,7 @@ const CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
               onPress={() => {
                 props.navigation.navigate("Config");
               }}
-            />
+            /> */}
           </View>
         </View>
       </DrawerContentScrollView>
