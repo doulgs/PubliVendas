@@ -23,6 +23,7 @@ import {
 } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "styled-components/native";
+import { useAuth } from "../context";
 
 type CustomDrawerContentProps = DrawerContentComponentProps;
 
@@ -30,6 +31,7 @@ const statusBarHeight = StatusBar.currentHeight;
 
 const CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
   const { colors } = useTheme();
+  const { signOut } = useAuth();
   return (
     <View style={{ flex: 1, backgroundColor: "#0A3750" }}>
       <DrawerContentScrollView style={styles.headerDrawerSection} {...props}>
@@ -44,9 +46,8 @@ const CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
                 }}
               >
                 <Avatar.Image
-                  source={{
-                    uri: "https://api.adorable.io/avatars/50/abott@adorable.png",
-                  }}
+                  style={{ backgroundColor: "#0A3750" }}
+                  source={require("../assets/images/UserPublisoft.png")}
                   size={50}
                 />
                 <View style={{ marginLeft: 15, flexDirection: "column" }}>
@@ -129,7 +130,7 @@ const CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
             />
           )}
           label="Sair da aplicação"
-          onPress={() => {}}
+          onPress={() => signOut()}
         />
       </View>
     </View>

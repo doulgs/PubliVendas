@@ -1,20 +1,22 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { ButtonArea, ButtonText, Container } from "./styles";
+import { Avatar, Button, Card, Text } from "react-native-paper";
+import { Container } from "./styles";
+import { Image, StyleSheet } from "react-native";
+import Select from "../../Helpers/Select";
 
 const Pedidos: React.FC = () => {
-  const navigation = useNavigation();
-  async function handleNav() {
-    navigation.navigate("Clientes");
-  }
-
   return (
     <Container>
-      <ButtonArea onPress={handleNav}>
-        <ButtonText>Ir Para Clientes</ButtonText>
-      </ButtonArea>
+      <Card>
+        <Card.Content style={{ flexDirection: "row" }}>
+          <></>
+        </Card.Content>
+      </Card>
     </Container>
   );
 };
+
+const Styles = StyleSheet.create({});
 
 export default Pedidos;
