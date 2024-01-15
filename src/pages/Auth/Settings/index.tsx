@@ -14,14 +14,15 @@ import TextHelper from "../../../Helpers/Text";
 import InputHelper from "../../../Helpers/Input";
 import ButtonHelper from "../../../Helpers/Button";
 import { useTheme } from "styled-components/native";
-import { useNavigation } from "@react-navigation/native";
+
 import { useAuth } from "../../../context";
-import uuid from "react-native-uuid";
+import { useNavigation } from "@react-navigation/native";
+import { Keyboard } from "react-native";
 
 const Settings: React.FC = () => {
-  const { registerMobile } = useAuth();
-  const { colorBase } = useTheme();
   const navigation = useNavigation();
+  const { registerMobile, isLoading } = useAuth();
+  const { colorBase } = useTheme();
 
   const [activationKey, setActivationKey] = React.useState("");
   const [deviceId, setDeviceId] = React.useState<string | null>("null");
@@ -30,27 +31,20 @@ const Settings: React.FC = () => {
   const [versao, setVersao] = React.useState<string | null>("null");
 
   const handleInit = async () => {
-    registerMobile(activationKey, deviceId, plataforma, modelo, versao);
-    //navigation.navigate("SignIn");
-    navigation.navigate("SignIn");
+    Keyboard.dismiss();
+    await registerMobile(activationKey, deviceId, plataforma, modelo, versao);
   };
 
   React.useEffect(() => {
     async function getPlataforma() {
       const uniqueId = await DeviceInfo.getUniqueId();
       setDeviceId(uniqueId);
-      //setDeviceId("25");
-
       const Plataforma = Device.osName;
       setPlataforma(Plataforma);
-
       const Modelo = Device.deviceName;
       setModelo(Modelo);
-
       const Versao = Device.osVersion;
       setVersao(Versao);
-
-      //console.log(uniqueId, Plataforma, Modelo, Versao);
     }
 
     getPlataforma();
@@ -91,6 +85,7 @@ const Settings: React.FC = () => {
 
       <ContentButton>
         <ButtonHelper
+          isLoading={isLoading}
           title="Salvar Configuração"
           colorTitle={colorBase.White}
           colorBackground={colorBase.Success}
@@ -100,7 +95,6 @@ const Settings: React.FC = () => {
           title="Limpar base de dados"
           colorTitle={colorBase.White}
           colorBackground={colorBase.Error}
-          onPress={() => navigation.navigate("SignIn")}
         />
       </ContentButton>
     </Container>

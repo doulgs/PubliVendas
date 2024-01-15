@@ -6,13 +6,13 @@ import { AuthRoutes } from "./auth.routes";
 import Laoding from "../components/Loading";
 
 const Routes = () => {
-  const { isAuthenticated, loadingAuth } = useAuth();
+  const { isAuthenticated } = useAuth();
 
-  if (loadingAuth) {
-    return <Laoding />;
-  }
+  // if (loadingAuth) {
+  //   return <Laoding message="Carrendo as Infomações da Filial..." />;
+  // }
 
-  return !isAuthenticated ? <AppRoutes /> : <AuthRoutes />;
+  return isAuthenticated ? <AppRoutes /> : <AuthRoutes />;
 };
 
 export default Routes;
