@@ -6,8 +6,11 @@ import { PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { ThemeProvider } from "styled-components/native";
-import Routes from "./src/routes";
 import { THEME } from "./src/theme";
+import Routes from "./src/routes";
+
+import "intl";
+import "intl/locale-data/jsonp/pt-BR";
 
 // import Initialization from "./src/utils/Initialization";
 

@@ -25,6 +25,7 @@
     "expo-linear-gradient": "~12.3.0",
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
+    "intl": "^1.2.5",
     "react": "18.2.0",
     "react-native": "0.72.6",
     "react-native-device-info": "^10.12.0",
