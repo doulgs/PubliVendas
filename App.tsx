@@ -12,20 +12,21 @@ import Routes from "./src/routes";
 import "intl";
 import "intl/locale-data/jsonp/pt-BR";
 
-// import Initialization from "./src/utils/Initialization";
+import InitializationTable from "./src/utils/Initialization";
 
 export default function App() {
+  InitializationTable();
+
   return (
     <ThemeProvider theme={THEME}>
-      <AuthProvaider>
+      <NavigationContainer>
         <PaperProvider>
-          <NavigationContainer>
+          <AuthProvaider>
             <StatusBar style="auto" />
-            {/* <Initialization /> */}
             <Routes />
-          </NavigationContainer>
+          </AuthProvaider>
         </PaperProvider>
-      </AuthProvaider>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }

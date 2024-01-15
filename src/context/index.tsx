@@ -3,10 +3,13 @@ import { getRealm } from "../database/realm";
 import { getToken } from "../utils/getToken";
 import { registerPhone } from "../utils/registerPhone";
 
+import { useNavigation } from "@react-navigation/native";
+import { Alert } from "react-native";
+
 interface AuthContextProps {
   user: UserProps | null;
   isAuthenticated: boolean;
-  loadingAuth: boolean;
+  isLoading: boolean;
   registerMobile: Function;
   signIn: Function;
   signOut: Function;
@@ -26,8 +29,9 @@ export const AuthContext = createContext<AuthContextProps>(
 );
 
 export const AuthProvaider = ({ children }: any) => {
+  const navigation = useNavigation();
   const [user, setUser] = useState<UserProps | null>(null);
-  const [loadingAuth, setLoadingAuth] = useState<true | false>(false);
+  const [isLoading, setIsLoading] = useState<true | false>(false);
 
   async function registerMobile(
     activationKey: string,
@@ -36,10 +40,10 @@ export const AuthProvaider = ({ children }: any) => {
     modelo: string,
     versao: string
   ) {
-    setLoadingAuth(true);
+    setIsLoading(true);
     const realm = await getRealm();
+    const MyToken = await getToken();
     try {
-      const MyToken = await getToken();
       const registerApp = await registerPhone({
         activationKey,
         deviceId,
@@ -48,47 +52,56 @@ export const AuthProvaider = ({ children }: any) => {
         versao,
         MyToken,
       });
-      const responseData = await registerApp?.Data.Usuarios;
 
-      if (responseData) {
-        Object.values(responseData).forEach((obj: any) => {
-          try {
-            realm.write(() => {
-              const createdUserRealm = realm.create("UserSchema", {
-                Handle: obj.Handle,
-                Nome: obj.Nome,
-                Login: obj.Login,
-                Password: obj.Senha,
-                Ativo: obj.Vendedor_SowPublisoft,
-                EhAdministrador: obj.Role,
-                created_at: new Date(),
-                updated_at: new Date(),
+      if (registerApp?.Message === "Aparelho já registrado na base de dados!") {
+        navigation.navigate("SignIn");
+        Alert.alert("Aparelho já registrado na base de dados!");
+      } else if (registerApp?.IsValid === false) {
+        console.log("Erro -->", registerApp);
+      } else {
+        const responseData = await registerApp?.Data.Usuarios;
+
+        if (responseData) {
+          Object.values(responseData).forEach((obj: any) => {
+            try {
+              realm.write(() => {
+                const createdUserRealm = realm.create("UserSchema", {
+                  Handle: obj.Handle,
+                  Nome: obj.Nome,
+                  Login: obj.Login,
+                  Password: obj.Senha,
+                  Ativo: obj.Vendedor_SowPublisoft,
+                  EhAdministrador: obj.Role,
+                  created_at: new Date(),
+                  updated_at: new Date(),
+                });
+
+                console.log(
+                  "Sync",
+                  `criação do registro do usuario com o Handle ${obj.Handle} `
+                );
+                const response = realm.objects("UserSchema");
+                console.log(response);
               });
-
-              console.log(
-                "Sync",
-                `criação do registro do usuario com o Handle ${obj.Handle} `
-              );
-              const response = realm.objects("UserSchema");
-              console.log(response);
-            });
-          } catch (error) {
-            console.log("Erro na criação do registro -->", error);
-          }
-        });
+            } catch (error) {
+              console.log("Erro na criação do registro -->", error);
+            }
+          });
+        }
+        navigation.navigate("SignIn");
       }
     } catch (err) {
       console.log(err);
-      setLoadingAuth(false);
+      setIsLoading(false);
     } finally {
       realm.close();
-      setLoadingAuth(false);
+      setIsLoading(false);
     }
   }
 
   async function signIn(login: string, password: string) {
     const realm = await getRealm();
-    setLoadingAuth(true);
+    setIsLoading(true);
 
     try {
       const response = realm
@@ -106,7 +119,7 @@ export const AuthProvaider = ({ children }: any) => {
       }
     } catch (error) {
     } finally {
-      setLoadingAuth(false);
+      setIsLoading(false);
       console.log(user);
       //TODO dar sequencia nas validacoes
     }
@@ -123,7 +136,7 @@ export const AuthProvaider = ({ children }: any) => {
         signIn,
         user,
         isAuthenticated: !!user,
-        loadingAuth,
+        isLoading,
         signOut,
       }}
     >
