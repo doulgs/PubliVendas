@@ -1,6 +1,4 @@
 import { getRealm } from "../database/realm";
-import uuid from "react-native-uuid";
-import { Alert } from "react-native";
 
 const InitializationTable = async () => {
   const realm = await getRealm();
@@ -10,24 +8,30 @@ const InitializationTable = async () => {
       try {
         realm.write(() => {
           const createdUserRealm = realm.create("UserSchema", {
-            Handle: uuid.v4(),
+            Handle: 1,
+            Nome: "admin",
             Login: "admin",
             Password: "admin",
-            Ativo: true,
-            EhGerente: true,
-            EhAdministrador: true,
-            token: "admin",
+            Ativo: 1,
+            EhAdministrador: "1",
             created_at: new Date(),
             updated_at: new Date(),
           });
-          Alert.alert("Sync", `Tabela de usuarios criada com sucesso `);
+          console.log("Sync", `Tabela de usuários criada com sucesso`);
         });
+
+        // Retorna true se a tabela foi criada com sucesso
+        return true;
       } catch (error) {
-        console.log("Erro na criação da tabela usuario -->", error);
+        console.log("Erro na criação da tabela de usuários -->", error);
+        // Retorna false em caso de erro
+        return false;
       }
     }
   } catch (error) {
-    console.log("Não foi possivel carregar os usuarios cadastrados -->", error);
+    console.log("Não foi possível carregar os usuários cadastrados -->", error);
+    // Retorna false em caso de erro
+    return false;
   } finally {
     realm.close();
   }
