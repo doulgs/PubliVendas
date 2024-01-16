@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignIn from "../pages/Auth/SignIn";
 import Settings from "../pages/Auth/Settings";
 import { useTheme } from "styled-components/native";
+import { LoadingScreen } from "../components/LoadingScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,11 @@ function AuthRoutes() {
       <Stack.Screen
         name="SignIn"
         component={SignIn}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="LoadingScreen"
+        component={LoadingScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

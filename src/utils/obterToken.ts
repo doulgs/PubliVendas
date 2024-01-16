@@ -1,17 +1,17 @@
 import api from "../services/api";
 
-async function getToken() {
+const obterToken = async () => {
   try {
-    const response = await api.post("/token", {
+    const { data } = await api.post("/token", {
       grant_type: "password",
       username: "integracao",
       password: "pbl@1991",
     });
-    const token = response.data.access_token;
-    return token;
+
+    return data.access_token;
   } catch (err) {
     console.error("Erro na solicitação de token:", err);
   }
-}
+};
 
-export { getToken };
+export { obterToken };

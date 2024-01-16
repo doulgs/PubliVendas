@@ -12,10 +12,10 @@ import Routes from "./src/routes";
 import "intl";
 import "intl/locale-data/jsonp/pt-BR";
 
-import InitializationTable from "./src/utils/Initialization";
+import { VerificarInicializacao } from "./src/utils/VerificarInicializacao";
 
 export default function App() {
-  InitializationTable();
+  VerificarInicializacao();
 
   return (
     <ThemeProvider theme={THEME}>

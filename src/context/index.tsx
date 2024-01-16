@@ -1,11 +1,10 @@
 import { useState, useContext, createContext, useEffect } from "react";
-import { getRealm } from "../database/realm";
-import { getToken } from "../utils/getToken";
-import { registerPhone } from "../utils/registerPhone";
-
-import { useNavigation } from "@react-navigation/native";
 import { Alert } from "react-native";
-import { encryptToMD5 } from "../utils/encryptToMD5";
+import { getRealm } from "../database/realm";
+import { obterToken } from "../utils/obterToken";
+import { registrarTelefone } from "../utils/registrarTelefone";
+import { criptografarParaMD5 } from "../utils/criptografarParaMD5";
+import { useNavigation } from "@react-navigation/native";
 
 interface AuthContextProps {
   user: UserProps | null;
@@ -42,10 +41,12 @@ export const AuthProvaider = ({ children }: any) => {
     versao: string
   ) {
     setIsLoading(true);
+    navigation.navigate("LoadingScreen");
     const realm = await getRealm();
-    const MyToken = await getToken();
+    const MyToken = await obterToken();
+
     try {
-      const registerApp = await registerPhone({
+      const registerApp = await registrarTelefone({
         activationKey,
         deviceId,
         plataforma,
@@ -55,81 +56,81 @@ export const AuthProvaider = ({ children }: any) => {
       });
 
       if (registerApp?.Message === "Aparelho já registrado na base de dados!") {
-        navigation.navigate("SignIn");
+        navigation.goBack();
         Alert.alert("Aparelho já registrado na base de dados!");
       } else if (registerApp?.IsValid === false) {
         console.log("Erro -->", registerApp);
       } else {
-        const responseDataUsuario = await registerApp?.Data.Usuarios;
-        if (responseDataUsuario) {
-          Object.values(responseDataUsuario).forEach((obj: any) => {
-            try {
-              realm.write(() => {
-                const createdUserRealm = realm.create("UserSchema", {
-                  Handle: obj.Handle,
-                  Nome: obj.Nome,
-                  Login: obj.Login,
-                  Password: obj.Senha,
-                  Ativo: obj.Vendedor_SowPublisoft,
-                  EhAdministrador: obj.Role,
-                  created_at: new Date(),
-                  updated_at: new Date(),
-                });
-
-                console.log(
-                  "Sync",
-                  `criação do registro do usuario com o Handle ${obj.Handle} `
-                );
-                // const response = realm.objects("UserSchema");
-                // console.log(response);
-              });
-            } catch (error) {
-              console.log("Erro na criação do registro de Usuario -->", error);
-            }
-          });
-        }
-
-        const responseDataFilial = await registerApp?.Data.Filial;
-        if (responseDataFilial) {
-          try {
-            realm.write(() => {
-              const createdFilialRealm = realm.create("FilialSchema", {
-                Handle: responseDataFilial.Handle,
-                Nome: responseDataFilial.Nome,
-                Razao: responseDataFilial.Razao,
-                Fone: responseDataFilial.Fone,
-                CnpjCpf: responseDataFilial.CnpjCpf,
-                NomeSite: responseDataFilial.NomeSite,
-                Endereco: responseDataFilial.Endereco,
-                Numero: responseDataFilial.Numero,
-                Complemento: responseDataFilial.Complemento,
-                Bairro: responseDataFilial.Bairro,
-                Cep: responseDataFilial.Cep,
-                Cidade: responseDataFilial.Cidade,
-                Estado: responseDataFilial.Estado,
-              });
-              console.log("Sync-Filial");
-              // const response = realm.objects("FilialSchema");
-              // console.log(response);
-            });
-          } catch (error) {
-            console.log("Erro na criação do registro de Filial -->", error);
-          }
-        }
-
+        saveUserData(realm, registerApp?.Data.Usuarios);
+        saveFilialData(realm, registerApp?.Data.Filial);
         navigation.navigate("SignIn");
       }
     } catch (err) {
       console.log(err);
-      setIsLoading(false);
+      navigation.navigate("Settings");
     } finally {
       realm.close();
       setIsLoading(false);
     }
   }
 
+  function saveUserData(realm: Realm, responseDataUsuario?: any) {
+    if (responseDataUsuario) {
+      responseDataUsuario.forEach((obj: any) => {
+        try {
+          realm.write(() => {
+            const createdUserRealm = realm.create("UserSchema", {
+              Handle: obj.Handle,
+              Nome: obj.Nome,
+              Login: obj.Login,
+              Password: obj.Senha,
+              Ativo: obj.Vendedor_SowPublisoft,
+              EhAdministrador: obj.Role,
+              created_at: new Date(),
+              updated_at: new Date(),
+            });
+
+            console.log(
+              "Sync-Usuario",
+              `criação do registro do usuario --> ${obj.Login}`
+            );
+          });
+        } catch (error) {
+          console.log("Erro na criação do registro de Usuario -->", error);
+        }
+      });
+    }
+  }
+
+  function saveFilialData(realm: Realm, responseDataFilial?: any) {
+    if (responseDataFilial) {
+      try {
+        realm.write(() => {
+          const createdFilialRealm = realm.create("FilialSchema", {
+            Handle: responseDataFilial.Handle,
+            Nome: responseDataFilial.Nome,
+            Razao: responseDataFilial.Razao,
+            Fone: responseDataFilial.Fone,
+            CnpjCpf: responseDataFilial.CnpjCpf,
+            NomeSite: responseDataFilial.NomeSite,
+            Endereco: responseDataFilial.Endereco,
+            Numero: responseDataFilial.Numero,
+            Complemento: responseDataFilial.Complemento,
+            Bairro: responseDataFilial.Bairro,
+            Cep: responseDataFilial.Cep,
+            Cidade: responseDataFilial.Cidade,
+            Estado: responseDataFilial.Estado,
+          });
+          console.log("Sync-Filial");
+        });
+      } catch (error) {
+        console.log("Erro na criação do registro de Filial -->", error);
+      }
+    }
+  }
+
   async function signIn(login: string, password: string) {
-    const passwordCrypto = encryptToMD5(password);
+    const passwordCrypto = criptografarParaMD5(password);
     const realm = await getRealm();
     setIsLoading(true);
 

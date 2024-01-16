@@ -1,6 +1,6 @@
 import api from "../services/api";
 
-interface registerPhoneProps {
+interface Props {
   activationKey: string;
   deviceId: string;
   plataforma: string;
@@ -9,22 +9,22 @@ interface registerPhoneProps {
   MyToken: string;
 }
 
-async function registerPhone({
+async function registrarTelefone({
   activationKey,
   deviceId,
   plataforma,
   modelo,
   versao,
   MyToken,
-}: registerPhoneProps) {
+}: Props) {
   try {
-    const response = await api.post(
+    const { data } = await api.post(
       "/pbl/Filial/CadastrarAparelho",
       {
-        ChaveApps: `${activationKey}`,
-        UUID: `${deviceId}`,
-        Modelo: `${modelo}`,
-        Dispositivo: `${plataforma + "-" + versao}`,
+        ChaveApps: activationKey,
+        UUID: deviceId,
+        Modelo: modelo,
+        Dispositivo: `${plataforma}-${versao}`,
       },
       {
         headers: {
@@ -33,9 +33,7 @@ async function registerPhone({
       }
     );
 
-    const IsValid = response.data.IsValid;
-    const Message = response.data.Message;
-    const Data = response.data.Data;
+    const { IsValid, Message, Data } = data;
 
     return { IsValid, Message, Data };
   } catch (err) {
@@ -43,4 +41,4 @@ async function registerPhone({
   }
 }
 
-export { registerPhone };
+export { registrarTelefone };

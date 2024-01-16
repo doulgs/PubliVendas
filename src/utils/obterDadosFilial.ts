@@ -1,17 +1,13 @@
 import { getRealm } from "../database/realm";
 
-const getBranchData = async () => {
-  const realm = await getRealm();
+const obterDadosFilial = async () => {
   try {
+    const realm = await getRealm();
     const response = realm.objects("FilialSchema");
-    if (response.length > 0) {
-      console.log(response);
-    }
+    return response.length > 0 ? response : null;
   } catch (error) {
     console.log("Não foi possível carregar os cadastrados -->", error);
-  } finally {
-    realm.close();
   }
 };
 
-export default getBranchData;
+export { obterDadosFilial };

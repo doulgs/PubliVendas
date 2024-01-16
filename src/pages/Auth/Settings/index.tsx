@@ -91,12 +91,12 @@ const Settings: React.FC = () => {
           colorBackground={colorBase.Success}
           onPress={handleInit}
         />
-        <ButtonHelper
+        {/* <ButtonHelper
           title="Limpar base de dados"
           colorTitle={colorBase.White}
           colorBackground={colorBase.Error}
           onPress={() => navigation.navigate("SignIn")}
-        />
+        /> */}
       </ContentButton>
     </Container>
   );
