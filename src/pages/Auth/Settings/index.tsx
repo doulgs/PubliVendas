@@ -95,6 +95,7 @@ const Settings: React.FC = () => {
           title="Limpar base de dados"
           colorTitle={colorBase.White}
           colorBackground={colorBase.Error}
+          onPress={() => navigation.navigate("SignIn")}
         />
       </ContentButton>
     </Container>

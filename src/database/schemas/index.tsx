@@ -3,6 +3,7 @@ import { BairroSchema } from "./BairroSchema";
 import { CidadeSchema } from "./CidadeSchema";
 import { CondicaoSchema } from "./CondicaoSchema";
 import { FormulaSchema } from "./FormulaSchema";
+import { FilialSchema } from "./FilialSchema";
 import { Grupo1Schema } from "./Grupo1Schema";
 import { Grupo2Excecao } from "./Grupo2Excecao";
 import { Grupo2Schema } from "./Grupo2Schema";
@@ -22,6 +23,7 @@ export {
   CidadeSchema,
   CondicaoSchema,
   FormulaSchema,
+  FilialSchema,
   Grupo1Schema,
   Grupo2Excecao,
   Grupo2Schema,

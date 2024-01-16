@@ -5,6 +5,7 @@ import { registerPhone } from "../utils/registerPhone";
 
 import { useNavigation } from "@react-navigation/native";
 import { Alert } from "react-native";
+import { encryptToMD5 } from "../utils/encryptToMD5";
 
 interface AuthContextProps {
   user: UserProps | null;
@@ -59,10 +60,9 @@ export const AuthProvaider = ({ children }: any) => {
       } else if (registerApp?.IsValid === false) {
         console.log("Erro -->", registerApp);
       } else {
-        const responseData = await registerApp?.Data.Usuarios;
-
-        if (responseData) {
-          Object.values(responseData).forEach((obj: any) => {
+        const responseDataUsuario = await registerApp?.Data.Usuarios;
+        if (responseDataUsuario) {
+          Object.values(responseDataUsuario).forEach((obj: any) => {
             try {
               realm.write(() => {
                 const createdUserRealm = realm.create("UserSchema", {
@@ -80,14 +80,43 @@ export const AuthProvaider = ({ children }: any) => {
                   "Sync",
                   `criação do registro do usuario com o Handle ${obj.Handle} `
                 );
-                const response = realm.objects("UserSchema");
-                console.log(response);
+                // const response = realm.objects("UserSchema");
+                // console.log(response);
               });
             } catch (error) {
-              console.log("Erro na criação do registro -->", error);
+              console.log("Erro na criação do registro de Usuario -->", error);
             }
           });
         }
+
+        const responseDataFilial = await registerApp?.Data.Filial;
+        if (responseDataFilial) {
+          try {
+            realm.write(() => {
+              const createdFilialRealm = realm.create("FilialSchema", {
+                Handle: responseDataFilial.Handle,
+                Nome: responseDataFilial.Nome,
+                Razao: responseDataFilial.Razao,
+                Fone: responseDataFilial.Fone,
+                CnpjCpf: responseDataFilial.CnpjCpf,
+                NomeSite: responseDataFilial.NomeSite,
+                Endereco: responseDataFilial.Endereco,
+                Numero: responseDataFilial.Numero,
+                Complemento: responseDataFilial.Complemento,
+                Bairro: responseDataFilial.Bairro,
+                Cep: responseDataFilial.Cep,
+                Cidade: responseDataFilial.Cidade,
+                Estado: responseDataFilial.Estado,
+              });
+              console.log("Sync-Filial");
+              // const response = realm.objects("FilialSchema");
+              // console.log(response);
+            });
+          } catch (error) {
+            console.log("Erro na criação do registro de Filial -->", error);
+          }
+        }
+
         navigation.navigate("SignIn");
       }
     } catch (err) {
@@ -100,13 +129,14 @@ export const AuthProvaider = ({ children }: any) => {
   }
 
   async function signIn(login: string, password: string) {
+    const passwordCrypto = encryptToMD5(password);
     const realm = await getRealm();
     setIsLoading(true);
 
     try {
       const response = realm
         .objects("UserSchema")
-        .filtered(`Login = '${login}'`, `Password = '${password}'`)[0];
+        .filtered(`Login = '${login}'`, `Password = '${passwordCrypto}'`)[0];
       if (response.length !== 0) {
         setUser({
           Login: response.Login as string,
@@ -120,8 +150,6 @@ export const AuthProvaider = ({ children }: any) => {
     } catch (error) {
     } finally {
       setIsLoading(false);
-      console.log(user);
-      //TODO dar sequencia nas validacoes
     }
   }
 

@@ -17,6 +17,7 @@ import {
   PromocaoItemSchema,
   TabelaSchema,
   UnidadeSchema,
+  FilialSchema,
 } from "./schemas";
 
 export const getRealm = async () =>
@@ -28,6 +29,7 @@ export const getRealm = async () =>
       CidadeSchema,
       CondicaoSchema,
       FormulaSchema,
+      FilialSchema,
       Grupo1Schema,
       Grupo2Excecao,
       Grupo2Schema,
