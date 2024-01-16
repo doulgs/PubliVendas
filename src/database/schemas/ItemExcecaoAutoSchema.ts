@@ -1,11 +1,13 @@
-export const ItemExcecaoAutoSchema = {
+import { ObjectSchema } from "realm";
+
+export const ItemExcecaoAutoSchema: ObjectSchema = {
   name: "ItemExcecaoAutoSchema",
 
   properties: {
-    Handle: "long",
-    HandleFilial: "long",
-    HandleItem: "long",
-    HandleExcecao: "long",
+    Handle: "int",
+    HandleFilial: "int",
+    HandleItem: "int",
+    HandleExcecao: "int",
     HandleTrade: "int",
     Quantidade: "double",
     Plataforma: "int",

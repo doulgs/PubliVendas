@@ -1,12 +1,14 @@
-export const Grupo2Excecao = {
+import { ObjectSchema } from "realm";
+
+export const Grupo2Excecao: ObjectSchema = {
   name: "Grupo2Excecao",
 
   properties: {
-    Handle: "long",
-    HandleFilial: "long",
-    HandleGrupo2: "long",
-    HandleItem: "long",
-    HandleGrupoExcecao: "long",
+    Handle: "int",
+    HandleFilial: "int",
+    HandleGrupo2: "int",
+    HandleItem: "int",
+    HandleGrupoExcecao: "int",
     HandleTrade: "int",
     Excecao: "string",
     Valor: "double",

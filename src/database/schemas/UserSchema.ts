@@ -1,4 +1,6 @@
-export const UserSchema = {
+import { ObjectSchema } from "realm";
+
+export const UserSchema: ObjectSchema = {
   name: "UserSchema",
 
   properties: {

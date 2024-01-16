@@ -1,13 +1,15 @@
-export const ItemSchema = {
+import { ObjectSchema } from "realm";
+
+export const ItemSchema: ObjectSchema = {
   name: "ItemSchema",
 
   properties: {
-    Handle: "long",
-    HandleFilial: "long",
-    HandleGrupo1: "long",
-    HandleGrupo2: "long",
-    HandleGrupo3: "long",
-    HandleUnidade: "long",
+    Handle: "int",
+    HandleFilial: "int",
+    HandleGrupo1: "int",
+    HandleGrupo2: "int",
+    HandleGrupo3: "int",
+    HandleUnidade: "int",
     HandleTrade: "int",
     Codigo: "string",
     Descricao: "string",
@@ -16,7 +18,7 @@ export const ItemSchema = {
     Foto: "string",
     PrecoValor: "double",
     Composicao: "bool",
-    DescLonga: "string",
+    Descinta: "string",
     ComposicaoBarra: "string",
     NaoPermiteDesconto: "bool",
     DescricaoDif: "string",

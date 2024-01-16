@@ -1,11 +1,13 @@
-export const PromocaoItemSchema = {
+import { ObjectSchema } from "realm";
+
+export const PromocaoItemSchema: ObjectSchema = {
   name: "PromocaoItemSchema",
 
   properties: {
-    Handle: "long",
-    HandleFilial: "long",
+    Handle: "int",
+    HandleFilial: "int",
     HandleTrade: "int",
-    HandleItem: "long",
+    HandleItem: "int",
     DataInicio: "date",
     DataFim: "date",
     HoraInicio: "date",

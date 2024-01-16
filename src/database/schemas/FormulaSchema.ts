@@ -1,9 +1,11 @@
-export const FormulaSchema = {
+import { ObjectSchema } from "realm";
+
+export const FormulaSchema: ObjectSchema = {
   name: "FormulaSchema",
 
   properties: {
-    Handle: "long",
-    HandleFilial: "long",
+    Handle: "int",
+    HandleFilial: "int",
     HandleTrade: "int",
     Plataforma: "int",
     Descricao: "string",

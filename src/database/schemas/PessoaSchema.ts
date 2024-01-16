@@ -1,9 +1,11 @@
-export const PessoaSchema = {
+import { ObjectSchema } from "realm";
+
+export const PessoaSchema: ObjectSchema = {
   name: "PessoaSchema",
 
   properties: {
-    Handle: "long",
-    HandleFilial: "long",
+    Handle: "int",
+    HandleFilial: "int",
     HandleTrade: "int",
     Plataforma: "int",
     Codigo: "int",
@@ -13,21 +15,21 @@ export const PessoaSchema = {
     Endereco: "string",
     Numero: "int",
     Complemento: "string",
-    Proximidade: "varchar",
+    Proximidade: "string",
     Bairro: "string",
     Cep: "string",
     Cidade: "string",
     Email: "string",
     Telefone: "string",
     Observacao: "string",
-    Tipo: "varchar",
-    HandleTabela: "long",
-    Uf: "varchar",
-    HandleUsuario: "long",
-    Insc: "varchar",
+    Tipo: "string",
+    HandleTabela: "int",
+    Uf: "string",
+    HandleUsuario: "int",
+    Insc: "string",
     Bloqueado: "bool",
     ObservacaoPessoa: "string",
-    HandleCondicao: "long",
+    HandleCondicao: "int",
   },
 
   primaryKey: "Handle",

@@ -1,8 +1,10 @@
-export const BairroSchema = {
+import { ObjectSchema } from "realm";
+
+export const BairroSchema: ObjectSchema = {
   name: "BairroSchema",
 
   properties: {
-    Handle: "long",
+    Handle: "int",
     HandleCidade: "int",
     HandleFilial: "int",
     HandleTrade: "int",

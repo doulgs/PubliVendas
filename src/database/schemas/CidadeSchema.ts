@@ -1,8 +1,10 @@
-export const CidadeSchema = {
+import { ObjectSchema } from "realm";
+
+export const CidadeSchema: ObjectSchema = {
   name: "CidadeSchema",
 
   properties: {
-    Handle: "long",
+    Handle: "int",
     Nome: "string",
     Ibge: "string",
     HandleFilial: "int",

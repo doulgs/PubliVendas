@@ -1,9 +1,11 @@
-export const Grupo3Schema = {
+import { ObjectSchema } from "realm";
+
+export const Grupo3Schema: ObjectSchema = {
   name: "Grupo3Schema",
 
   properties: {
-    Handle: "long",
-    HandleFilial: "long",
+    Handle: "int",
+    HandleFilial: "int",
     HandleTrade: "int",
     Codigo: "string",
     Nome: "string",

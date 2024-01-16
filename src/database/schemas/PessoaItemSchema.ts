@@ -1,12 +1,14 @@
-export const PessoaItemSchema = {
+import { ObjectSchema } from "realm";
+
+export const PessoaItemSchema: ObjectSchema = {
   name: "PessoaItemSchema",
 
   properties: {
-    Handle: "long",
-    HandleFilial: "long",
+    Handle: "int",
+    HandleFilial: "int",
     HandleTrade: "int",
-    ItemHandle: "long",
-    PessoaHandle: "long",
+    ItemHandle: "int",
+    PessoaHandle: "int",
     Preco: "double",
     Plataforma: "int",
   },
