@@ -2,23 +2,23 @@ import Realm from "realm";
 
 export interface ItePromocaoItem {
   Handle: number;
-  HandleFilial: number;
-  HandleTrade: number;
-  HandleItem: number;
-  DataInicio: Date;
-  DataFim: Date;
-  HoraInicio: Date;
-  HoraFim: Date;
-  Segunda: boolean;
-  Terca: boolean;
-  Quarta: boolean;
-  Quinta: boolean;
-  Sexta: boolean;
-  Sabado: boolean;
-  Domingo: boolean;
-  ValorPromocional: number;
-  PercentualDescontoFixo: number;
-  Plataforma: number;
+  HandleFilial: number | null;
+  HandleTrade: number | null;
+  HandleItem: number | null;
+  DataInicio: Date | null;
+  DataFim: Date | null;
+  HoraInicio: Date | null;
+  HoraFim: Date | null;
+  Segunda: boolean | null;
+  Terca: boolean | null;
+  Quarta: boolean | null;
+  Quinta: boolean | null;
+  Sexta: boolean | null;
+  Sabado: boolean | null;
+  Domingo: boolean | null;
+  ValorPromocional: number | null;
+  PercentualDescontoFixo: number | null;
+  Plataforma: number | null;
 }
 
 export type ItePromocaoItemObject = ItePromocaoItem & Realm.Object;

@@ -2,12 +2,12 @@ import Realm from "realm";
 
 export interface IntItemExcecaoAuto {
   Handle: number;
-  HandleFilial: number;
-  HandleItem: number;
-  HandleExcecao: number;
-  HandleTrade: number;
-  Quantidade: number;
-  Plataforma: number;
+  HandleFilial: number | null;
+  HandleItem: number | null;
+  HandleExcecao: number | null;
+  HandleTrade: number | null;
+  Quantidade: number | null;
+  Plataforma: number | null;
 }
 
 export type IntItemExcecaoAutoObject = IntItemExcecaoAuto & Realm.Object;

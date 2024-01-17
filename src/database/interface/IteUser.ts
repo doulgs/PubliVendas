@@ -2,13 +2,13 @@ import Realm from "realm";
 
 export interface IteUser {
   Handle: number;
-  Nome: string;
-  Login: string;
-  Password: string;
-  Ativo: number;
-  EhAdministrador: string;
-  created_at: Date;
-  updated_at: Date;
+  Nome: string | null;
+  Login: string | null;
+  Password: string | null;
+  Ativo: number | null;
+  EhAdministrador: string | null;
+  created_at: Date | null;
+  updated_at: Date | null;
 }
 
 export type IteUserObject = IteUser & Realm.Object;

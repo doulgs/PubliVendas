@@ -2,20 +2,20 @@ import Realm from "realm";
 
 export interface IntGrupo2Excecao {
   Handle: number;
-  HandleFilial: number;
-  HandleGrupo2: number;
-  HandleItem: number;
-  HandleGrupoExcecao: number;
-  HandleTrade: number;
-  Excecao: string;
-  Valor: number;
-  Ativa: boolean;
-  Ordem: string;
-  IteHandle: number;
-  IteQuantidade: number;
-  IteTipoValor: string;
-  IteValorInformado: number;
-  Plataforma: number;
+  HandleFilial: number | null;
+  HandleGrupo2: number | null;
+  HandleItem: number | null;
+  HandleGrupoExcecao: number | null;
+  HandleTrade: number | null;
+  Excecao: string | null;
+  Valor: number | null;
+  Ativa: boolean | null;
+  Ordem: string | null;
+  IteHandle: number | null;
+  IteQuantidade: number | null;
+  IteTipoValor: string | null;
+  IteValorInformado: number | null;
+  Plataforma: number | null;
 }
 
 export type IntGrupo2ExcecaoObject = IntGrupo2Excecao & Realm.Object;
