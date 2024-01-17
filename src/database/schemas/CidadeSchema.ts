@@ -5,12 +5,12 @@ export const CidadeSchema: ObjectSchema = {
 
   properties: {
     Handle: "int",
-    Nome: "string",
-    Ibge: "string",
-    HandleFilial: "int",
-    HandleTrade: "int",
-    UF: "string",
-    Plataforma: "int",
+    Nome: { type: "string", optional: true },
+    Ibge: { type: "string", optional: true },
+    HandleFilial: { type: "int", optional: true },
+    HandleTrade: { type: "int", optional: true },
+    UF: { type: "string", optional: true },
+    Plataforma: { type: "int", optional: true },
   },
 
   primaryKey: "Handle",

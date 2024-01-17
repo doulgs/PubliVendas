@@ -5,12 +5,12 @@ export const PessoaItemSchema: ObjectSchema = {
 
   properties: {
     Handle: "int",
-    HandleFilial: "int",
-    HandleTrade: "int",
-    ItemHandle: "int",
-    PessoaHandle: "int",
-    Preco: "double",
-    Plataforma: "int",
+    HandleFilial: { type: "int", optional: true },
+    HandleTrade: { type: "int", optional: true },
+    ItemHandle: { type: "int", optional: true },
+    PessoaHandle: { type: "int", optional: true },
+    Preco: { type: "double", optional: true },
+    Plataforma: { type: "int", optional: true },
   },
 
   primaryKey: "Handle",

@@ -11,6 +11,7 @@ import { Grupo3Schema } from "./Grupo3Schema";
 import { GrupoExcecaoSchema } from "./GrupoExcecaoSchema";
 import { ItemExcecaoAutoSchema } from "./ItemExcecaoAutoSchema";
 import { ItemSchema } from "./ItemSchema";
+import { IteTabForSchema } from "./IteTabForSchema";
 import { PessoaItemSchema } from "./PessoaItemSchema";
 import { PessoaSchema } from "./PessoaSchema";
 import { PromocaoItemSchema } from "./PromocaoItemSchema";
@@ -31,6 +32,7 @@ export {
   GrupoExcecaoSchema,
   ItemExcecaoAutoSchema,
   ItemSchema,
+  IteTabForSchema,
   PessoaItemSchema,
   PessoaSchema,
   PromocaoItemSchema,

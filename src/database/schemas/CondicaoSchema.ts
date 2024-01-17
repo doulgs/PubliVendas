@@ -5,13 +5,13 @@ export const CondicaoSchema: ObjectSchema = {
 
   properties: {
     Handle: "int",
-    HandleFilial: "int",
-    HandleTrade: "int",
-    Descricao: "string",
-    EhDinheiro: "bool",
-    Plataforma: "int",
-    EhPagamentoOnLine: "bool",
-    TipoPagto: "string",
+    HandleFilial: { type: "int", optional: true },
+    HandleTrade: { type: "int", optional: true },
+    Descricao: { type: "string", optional: true },
+    EhDinheiro: { type: "bool", optional: true },
+    Plataforma: { type: "int", optional: true },
+    EhPagamentoOnLine: { type: "bool", optional: true },
+    TipoPagto: { type: "string", optional: true },
   },
 
   primaryKey: "Handle",

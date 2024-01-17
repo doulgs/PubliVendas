@@ -5,13 +5,13 @@ export const UserSchema: ObjectSchema = {
 
   properties: {
     Handle: "int",
-    Nome: "string",
-    Login: "string",
-    Password: "string",
-    Ativo: "int",
-    EhAdministrador: "string",
-    created_at: "date",
-    updated_at: "date",
+    Nome: { type: "string", optional: true },
+    Login: { type: "string", optional: true },
+    Password: { type: "string", optional: true },
+    Ativo: { type: "int", optional: true },
+    EhAdministrador: { type: "string", optional: true },
+    created_at: { type: "date", optional: true },
+    updated_at: { type: "date", optional: true },
   },
 
   primaryKey: "Handle",

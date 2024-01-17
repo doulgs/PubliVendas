@@ -5,11 +5,11 @@ export const UnidadeSchema: ObjectSchema = {
 
   properties: {
     Handle: "int",
-    HandleFilial: "int",
-    HandleTrade: "int",
-    Sigla: "string",
-    Descricao: "string",
-    Plataforma: "int",
+    HandleFilial: { type: "int", optional: true },
+    HandleTrade: { type: "int", optional: true },
+    Sigla: { type: "string", optional: true },
+    Descricao: { type: "string", optional: true },
+    Plataforma: { type: "int", optional: true },
   },
 
   primaryKey: "Handle",

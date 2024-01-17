@@ -5,12 +5,12 @@ export const Grupo1Schema: ObjectSchema = {
 
   properties: {
     Handle: "int",
-    HandleFilial: "int",
-    HandleTrade: "int",
-    Codigo: "string",
-    Nome: "string",
-    Reduzido: "string",
-    Plataforma: "int",
+    HandleFilial: { type: "int", optional: true },
+    HandleTrade: { type: "int", optional: true },
+    Codigo: { type: "string", optional: true },
+    Nome: { type: "string", optional: true },
+    Reduzido: { type: "string", optional: true },
+    Plataforma: { type: "int", optional: true },
   },
 
   primaryKey: "Handle",
