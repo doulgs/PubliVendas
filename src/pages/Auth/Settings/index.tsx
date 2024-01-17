@@ -18,8 +18,9 @@ import { useTheme } from "styled-components/native";
 import { useAuth } from "../../../context";
 import { useNavigation } from "@react-navigation/native";
 import { Keyboard } from "react-native";
+import { getRealm } from "../../../database/realm";
 
-const Settings: React.FC = () => {
+const Settings: React.FC = ({}) => {
   const navigation = useNavigation();
   const { registerMobile, isLoading } = useAuth();
   const { colorBase } = useTheme();
@@ -88,15 +89,15 @@ const Settings: React.FC = () => {
           isLoading={isLoading}
           title="Salvar Configuração"
           colorTitle={colorBase.White}
-          colorBackground={colorBase.Success}
+          colorBackground={colorBase.Alert}
           onPress={handleInit}
         />
-        {/* <ButtonHelper
-          title="Limpar base de dados"
+        <ButtonHelper
+          title="Acessar"
           colorTitle={colorBase.White}
-          colorBackground={colorBase.Error}
+          colorBackground={colorBase.Success}
           onPress={() => navigation.navigate("SignIn")}
-        /> */}
+        />
       </ContentButton>
     </Container>
   );

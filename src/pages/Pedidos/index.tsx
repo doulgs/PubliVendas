@@ -1,23 +1,23 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Avatar, Button, Card, Text } from "react-native-paper";
+import { StyleSheet } from "react-native";
 import { Container } from "./styles";
-import { Image, StyleSheet } from "react-native";
-import { getAll } from "../../utils/getAll";
+import ButtonHelper from "../../Helpers/Button";
+import { executarSync } from "../../scripts/executarSync";
 
 const Pedidos: React.FC = () => {
-  // const retorno = getAll
   return (
     <Container>
-      <Card>
-        <Card.Content style={{ flexDirection: "row" }}>
-          <></>
-        </Card.Content>
-      </Card>
+      <ButtonHelper
+        title="Sync"
+        colorBackground="#191622"
+        colorTitle="#FFF"
+        onPress={executarSync}
+      />
     </Container>
   );
 };
 
-const Styles = StyleSheet.create({});
+const styles = StyleSheet.create({});
 
 export default Pedidos;

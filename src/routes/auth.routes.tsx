@@ -12,11 +12,16 @@ function AuthRoutes() {
   const { colors, colorBase } = useTheme();
   return (
     <Stack.Navigator
-      initialRouteName="Settings"
+      initialRouteName="SignIn"
       screenOptions={{
         headerStyle: { backgroundColor: colors.Primary },
       }}
     >
+      <Stack.Screen
+        name="SignIn"
+        component={SignIn}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Settings"
         component={Settings}
@@ -24,11 +29,6 @@ function AuthRoutes() {
           headerTitle: "Configurações",
           headerTintColor: colorBase.White,
         }}
-      />
-      <Stack.Screen
-        name="SignIn"
-        component={SignIn}
-        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="LoadingScreen"
