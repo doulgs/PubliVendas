@@ -5,14 +5,14 @@ export const BairroSchema: ObjectSchema = {
 
   properties: {
     Handle: "int",
-    HandleCidade: "int",
-    HandleFilial: "int",
-    HandleTrade: "int",
-    Nome: "string",
-    Valor: "double",
-    Ordem: "int",
-    NomeSemAcento: "string",
-    Plataforma: "int",
+    HandleCidade: { type: "int", optional: true },
+    HandleFilial: { type: "int", optional: true },
+    HandleTrade: { type: "int", optional: true },
+    Nome: { type: "string", optional: true },
+    Valor: { type: "double", optional: true },
+    Ordem: { type: "int", optional: true },
+    NomeSemAcento: { type: "string", optional: true },
+    Plataforma: { type: "int", optional: true },
   },
 
   primaryKey: "Handle",
