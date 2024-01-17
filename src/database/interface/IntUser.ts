@@ -1,6 +1,6 @@
 import Realm from "realm";
 
-export interface IteUser {
+export interface IntUser {
   Handle: number;
   Nome: string | null;
   Login: string | null;
@@ -11,4 +11,4 @@ export interface IteUser {
   updated_at: Date | null;
 }
 
-export type IteUserObject = IteUser & Realm.Object;
+export type IntUserObject = IntUser & Realm.Object;

@@ -1,6 +1,6 @@
 import Realm from "realm";
 
-export interface ItePromocaoItem {
+export interface IntPromocaoItem {
   Handle: number;
   HandleFilial: number | null;
   HandleTrade: number | null;
@@ -21,4 +21,4 @@ export interface ItePromocaoItem {
   Plataforma: number | null;
 }
 
-export type ItePromocaoItemObject = ItePromocaoItem & Realm.Object;
+export type IntPromocaoItemObject = IntPromocaoItem & Realm.Object;

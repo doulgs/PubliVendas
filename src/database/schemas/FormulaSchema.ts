@@ -27,7 +27,7 @@ export const FormulaSchema: ObjectSchema = {
     Desc31: { type: "double", optional: true },
     Desc32: { type: "double", optional: true },
     Desc33: { type: "double", optional: true },
-    Arredonda: { type: "bool", optional: true },
+    Arredonda: { type: "double", optional: true },
     Utiliza1: { type: "string", optional: true },
     Utiliza2: { type: "string", optional: true },
     Utiliza3: { type: "string", optional: true },

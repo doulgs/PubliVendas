@@ -1,6 +1,6 @@
 import Realm from "realm";
 
-export interface IteUnidade {
+export interface IntUnidade {
   Handle: number;
   HandleFilial: number | null;
   HandleTrade: number | null;
@@ -9,4 +9,4 @@ export interface IteUnidade {
   Plataforma: number | null;
 }
 
-export type IteUnidadeObject = IteUnidade & Realm.Object;
+export type IntUnidadeObject = IntUnidade & Realm.Object;

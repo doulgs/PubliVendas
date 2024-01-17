@@ -1,6 +1,6 @@
 import Realm from "realm";
 
-export interface IteTabela {
+export interface IntTabela {
   Handle: number;
   HandleFilial: number | null;
   HandleTrade: number | null;
@@ -12,4 +12,4 @@ export interface IteTabela {
   HandleFormula: number | null;
 }
 
-export type IteTabelaObject = IteTabela & Realm.Object;
+export type IntTabelaObject = IntTabela & Realm.Object;

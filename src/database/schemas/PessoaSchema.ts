@@ -27,7 +27,7 @@ export const PessoaSchema: ObjectSchema = {
     Uf: { type: "string", optional: true },
     HandleUsuario: { type: "int", optional: true },
     Insc: { type: "string", optional: true },
-    Bloqueado: { type: "bool", optional: true },
+    Bloqueado: { type: "int", optional: true },
     ObservacaoPessoa: { type: "string", optional: true },
     HandleCondicao: { type: "int", optional: true },
   },

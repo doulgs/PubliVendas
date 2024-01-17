@@ -1,6 +1,6 @@
 import Realm from "realm";
 
-export interface IntGrupo2 {
+export interface IntItem {
   Handle: number;
   HandleFilial: number | null;
   HandleGrupo1: number | null;
@@ -26,4 +26,4 @@ export interface IntGrupo2 {
   ClassificacaoMarketPlace: string | null;
 }
 
-export type IntGrupo2Object = IntGrupo2 & Realm.Object;
+export type IntItemObject = IntItem & Realm.Object;

@@ -1,7 +1,7 @@
 import { ObjectSchema } from "realm";
 
-export const Grupo2Excecao: ObjectSchema = {
-  name: "Grupo2Excecao",
+export const Grupo2ExcecaoSchema: ObjectSchema = {
+  name: "Grupo2ExcecaoSchema",
 
   properties: {
     Handle: "int",
@@ -12,7 +12,7 @@ export const Grupo2Excecao: ObjectSchema = {
     HandleTrade: { type: "int", optional: true },
     Excecao: { type: "string", optional: true },
     Valor: { type: "double", optional: true },
-    Ativa: { type: "bool", optional: true },
+    Ativa: { type: "int", optional: true },
     Ordem: { type: "string", optional: true },
     IteHandle: { type: "int", optional: true },
     IteQuantidade: { type: "double", optional: true },

@@ -5,7 +5,7 @@ import { CondicaoSchema } from "./CondicaoSchema";
 import { FormulaSchema } from "./FormulaSchema";
 import { FilialSchema } from "./FilialSchema";
 import { Grupo1Schema } from "./Grupo1Schema";
-import { Grupo2Excecao } from "./Grupo2Excecao";
+import { Grupo2ExcecaoSchema } from "./Grupo2ExcecaoSchema";
 import { Grupo2Schema } from "./Grupo2Schema";
 import { Grupo3Schema } from "./Grupo3Schema";
 import { GrupoExcecaoSchema } from "./GrupoExcecaoSchema";
@@ -26,7 +26,7 @@ export {
   FormulaSchema,
   FilialSchema,
   Grupo1Schema,
-  Grupo2Excecao,
+  Grupo2ExcecaoSchema,
   Grupo2Schema,
   Grupo3Schema,
   GrupoExcecaoSchema,

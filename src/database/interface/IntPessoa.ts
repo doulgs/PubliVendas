@@ -1,6 +1,6 @@
 import Realm from "realm";
 
-export interface ItePessoa {
+export interface IntPessoa {
   Handle: number;
   HandleFilial: number | null;
   HandleTrade: number | null;
@@ -29,4 +29,4 @@ export interface ItePessoa {
   HandleCondicao: number | null;
 }
 
-export type ItePessoaObject = ItePessoa & Realm.Object;
+export type IntPessoaObject = IntPessoa & Realm.Object;

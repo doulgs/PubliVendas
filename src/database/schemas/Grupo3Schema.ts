@@ -11,7 +11,7 @@ export const Grupo3Schema: ObjectSchema = {
     Nome: { type: "string", optional: true },
     Nome2: { type: "string", optional: true },
     Reduzido: { type: "string", optional: true },
-    Inativo: { type: "bool", optional: true },
+    Inativo: { type: "int", optional: true },
     QuantidadeItensComposicao: { type: "int", optional: true },
     Plataforma: { type: "int", optional: true },
   },

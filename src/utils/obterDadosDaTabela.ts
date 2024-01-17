@@ -19,7 +19,7 @@ type TableName =
   | "Item"
   | "IteTabFor"
   | "PessoaItem"
-  | "Pessoa"
+  | "Pessoas"
   | "PromocaoItem"
   | "Tabela"
   | "Unidade";

@@ -1,6 +1,6 @@
 import Realm from "realm";
 
-export interface IteIteTabForSchema {
+export interface IntIteTabFor {
   Handle: number;
   HandleItem: number | null;
   HandleTabela: number | null;
@@ -9,4 +9,4 @@ export interface IteIteTabForSchema {
   Preco: number | null;
 }
 
-export type IteIteTabForSchemaObject = IteIteTabForSchema & Realm.Object;
+export type IntIteTabForObject = IntIteTabFor & Realm.Object;
