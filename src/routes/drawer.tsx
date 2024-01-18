@@ -4,7 +4,7 @@ import { CustomDrawerContent } from "./CustomDrawerContent";
 
 import Pedidos from "../pages/Pedidos";
 import Clientes from "../pages/Clientes";
-import Produtos from "../pages/Produtos";
+import ListaGrupos from "../pages/ListaGrupos";
 import Config from "../pages/Config";
 
 import { useTheme } from "styled-components/native";
@@ -24,7 +24,11 @@ function DrawerScreens() {
     >
       <Drawer.Screen name="Pedidos" component={Pedidos} />
       <Drawer.Screen name="Clientes" component={Clientes} />
-      <Drawer.Screen name="Produtos" component={Produtos} />
+      <Drawer.Screen
+        name="ListaGrupos"
+        component={ListaGrupos}
+        options={{ headerTitle: "Selecione um Grupo" }}
+      />
       <Drawer.Screen name="Config" component={Config} />
     </Drawer.Navigator>
   );

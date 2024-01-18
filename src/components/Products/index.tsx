@@ -1,35 +1,28 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Card, Text } from "react-native-paper";
-import { formatCurrency } from "../../utils/formatCurrency";
+import { formatarParaMoeda } from "../../utils/formatarParaMoeda";
+import { IntItem } from "../../database/interface/IntItem";
 
 interface Props {
-  data: Products;
-}
-
-interface Products {
-  handle: number;
-  descricao: string;
-  grupos2: string;
-  unidade: string;
-  valor: number;
-  estoque: number;
+  data: IntItem;
 }
 
 const Products: React.FC<Props> = ({ data }) => {
+  const resultado: number = data.PrecoValor !== null ? data.PrecoValor : 0;
   return (
     <View style={styles.container}>
       <Card style={{ backgroundColor: "#ffffff" }}>
         <Card.Content style={styles.content}>
-          <Text style={styles.title}>{data.descricao}</Text>
+          <Text style={styles.title}>{data.Descricao}</Text>
         </Card.Content>
         <Card.Content style={styles.content}>
           <Text style={styles.subtitle}>Grupos2</Text>
-          <Text style={styles.title}>{data.grupos2}</Text>
+          <Text style={styles.title}>{data.Codigo}</Text>
         </Card.Content>
         <Card.Content style={styles.content}>
           <Text style={styles.subtitle}>UNIDADE</Text>
-          <Text style={styles.title}>{data.unidade}</Text>
+          <Text style={styles.title}>{data.HandleUnidade}</Text>
         </Card.Content>
 
         <View
@@ -44,13 +37,13 @@ const Products: React.FC<Props> = ({ data }) => {
             style={[styles.content, { flex: 1, borderBottomWidth: 0 }]}
           >
             <Text style={styles.subtitle}>VALOR</Text>
-            <Text style={styles.title}>{formatCurrency(data.valor)}</Text>
+            <Text style={styles.title}>{formatarParaMoeda(resultado)}</Text>
           </Card.Content>
           <Card.Content
             style={[styles.content, { flex: 1, borderBottomWidth: 0 }]}
           >
             <Text style={styles.subtitle}>ESTOQUE</Text>
-            <Text style={styles.title}>{data.estoque}</Text>
+            <Text style={styles.title}>{data.Quantidade}</Text>
           </Card.Content>
         </View>
       </Card>

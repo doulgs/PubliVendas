@@ -97,7 +97,7 @@ const CustomDrawerContent: React.FC<CustomDrawerContentProps> = (props) => {
                 )}
                 label="Produtos"
                 onPress={() => {
-                  props.navigation.navigate("Produtos");
+                  props.navigation.navigate("ListaGrupos");
                 }}
               />
             </View>
