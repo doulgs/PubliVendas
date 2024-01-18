@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
 import { IntPromocaoItem } from "../database/interface/IntPromocaoItem";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
 async function syncPromocaoItem() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("PromocaoItem");
+  const dadosApi = await obterDadosDaTabelaAPI("PromocaoItem");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
@@ -17,9 +17,6 @@ async function syncPromocaoItem() {
           const createDados = realm.create(
             "PromocaoItemSchema",
             {
-              Handle: obj.Handle,
-              HandleFilial: obj.HandleFilial,
-              HandleTrade: obj.HandleTrade,
               HandleItem: obj.HandleItem,
               DataInicio: obj.DataInicio,
               DataFim: obj.DataFim,
@@ -34,6 +31,9 @@ async function syncPromocaoItem() {
               Domingo: obj.Domingo,
               ValorPromocional: obj.ValorPromocional,
               PercentualDescontoFixo: obj.PercentualDescontoFixo,
+              Handle: obj.Handle,
+              HandleFilial: obj.HandleFilial,
+              HandleTrade: obj.HandleTrade,
               Plataforma: obj.Plataforma,
             },
             Realm.UpdateMode.Modified

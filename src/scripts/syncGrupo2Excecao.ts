@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
 import { IntGrupo2Excecao } from "../database/interface/IntGrupo2Excecao";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
 async function syncGrupo2Excecao() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("Grupo2Excecao");
+  const dadosApi = await obterDadosDaTabelaAPI("Grupo2Excecao");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
@@ -17,12 +17,9 @@ async function syncGrupo2Excecao() {
           const createDados = realm.create(
             "Grupo2ExcecaoSchema",
             {
-              Handle: obj.Handle,
-              HandleFilial: obj.HandleFilial,
               HandleGrupo2: obj.HandleGrupo2,
               HandleItem: obj.HandleItem,
               HandleGrupoExcecao: obj.HandleGrupoExcecao,
-              HandleTrade: obj.HandleTrade,
               Excecao: obj.Excecao,
               Valor: obj.Valor,
               Ativa: obj.Ativa,
@@ -31,6 +28,11 @@ async function syncGrupo2Excecao() {
               IteQuantidade: obj.IteQuantidade,
               IteTipoValor: obj.IteTipoValor,
               IteValorInformado: obj.IteValorInformado,
+              Quantidade: obj.Quantidade,
+              Mark: obj.Mark,
+              Handle: obj.Handle,
+              HandleFilial: obj.HandleFilial,
+              HandleTrade: obj.HandleTrade,
               Plataforma: obj.Plataforma,
             },
             Realm.UpdateMode.Modified

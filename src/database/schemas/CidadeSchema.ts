@@ -4,12 +4,13 @@ export const CidadeSchema: ObjectSchema = {
   name: "CidadeSchema",
 
   properties: {
-    Handle: "int",
+    UF: { type: "string", optional: true },
     Nome: { type: "string", optional: true },
     Ibge: { type: "string", optional: true },
+    //Tabelas: { type: "list", objectType: "Tabela", optional: true },
+    Handle: "int",
     HandleFilial: { type: "int", optional: true },
     HandleTrade: { type: "int", optional: true },
-    UF: { type: "string", optional: true },
     Plataforma: { type: "int", optional: true },
   },
 

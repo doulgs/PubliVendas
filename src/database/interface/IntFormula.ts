@@ -1,10 +1,6 @@
 import Realm from "realm";
 
 export interface IntFormula {
-  Handle: number;
-  HandleFilial: number | null;
-  HandleTrade: number | null;
-  Plataforma: number | null;
   Descricao: string | null;
   Fator11: number | null;
   Fator12: number | null;
@@ -24,11 +20,15 @@ export interface IntFormula {
   Desc31: number | null;
   Desc32: number | null;
   Desc33: number | null;
-  Arredonda: boolean | null;
+  Arredonda: number | null;
   Utiliza1: string | null;
   Utiliza2: string | null;
   Utiliza3: string | null;
   Icms: number | null;
+  Handle: number;
+  HandleFilial: number | null;
+  HandleTrade: number | null;
+  Plataforma: number | null;
 }
 
 export type IntFormulaObject = IntFormula & Realm.Object;

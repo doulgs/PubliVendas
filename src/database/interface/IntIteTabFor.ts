@@ -2,10 +2,10 @@ import Realm from "realm";
 
 export interface IntIteTabFor {
   Handle: number;
-  HandleItem: number | null;
-  HandleTabela: number | null;
+  HandleItem: number;
+  HandleTabela: number;
   HandleFormula: number | null;
-  HandleFilial: number | null;
+  HandleFilial: number;
   Preco: number | null;
 }
 

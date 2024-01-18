@@ -1,12 +1,12 @@
 import Realm from "realm";
 
 export interface IntCidade {
-  Handle: number;
+  UF: string | null;
   Nome: string | null;
   Ibge: string | null;
+  Handle: number;
   HandleFilial: number | null;
   HandleTrade: number | null;
-  UF: string | null;
   Plataforma: number | null;
 }
 

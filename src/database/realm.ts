@@ -1,9 +1,9 @@
 import Realm from "realm";
 import {
-  UserSchema,
   BairroSchema,
   CidadeSchema,
   CondicaoSchema,
+  FilialSchema,
   FormulaSchema,
   Grupo1Schema,
   Grupo2ExcecaoSchema,
@@ -12,24 +12,24 @@ import {
   GrupoExcecaoSchema,
   ItemExcecaoAutoSchema,
   ItemSchema,
-  PessoaItemSchema,
-  PessoaSchema,
+  PessoasItensSchema,
+  PessoasSchema,
   PromocaoItemSchema,
   TabelaSchema,
   UnidadeSchema,
-  FilialSchema,
+  IteTabForSchema,
+  UserSchema,
 } from "./schemas";
 
 export const getRealm = async () =>
   await Realm.open({
     path: "publiDataBase",
     schema: [
-      UserSchema,
       BairroSchema,
       CidadeSchema,
       CondicaoSchema,
-      FormulaSchema,
       FilialSchema,
+      FormulaSchema,
       Grupo1Schema,
       Grupo2ExcecaoSchema,
       Grupo2Schema,
@@ -37,10 +37,12 @@ export const getRealm = async () =>
       GrupoExcecaoSchema,
       ItemExcecaoAutoSchema,
       ItemSchema,
-      PessoaItemSchema,
-      PessoaSchema,
+      PessoasItensSchema,
+      PessoasSchema,
       PromocaoItemSchema,
       TabelaSchema,
       UnidadeSchema,
+      IteTabForSchema,
+      UserSchema,
     ],
   });

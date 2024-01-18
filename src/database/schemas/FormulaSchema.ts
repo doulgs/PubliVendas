@@ -4,10 +4,6 @@ export const FormulaSchema: ObjectSchema = {
   name: "FormulaSchema",
 
   properties: {
-    Handle: "int",
-    HandleFilial: { type: "int", optional: true },
-    HandleTrade: { type: "int", optional: true },
-    Plataforma: { type: "int", optional: true },
     Descricao: { type: "string", optional: true },
     Fator11: { type: "double", optional: true },
     Fator12: { type: "double", optional: true },
@@ -32,6 +28,11 @@ export const FormulaSchema: ObjectSchema = {
     Utiliza2: { type: "string", optional: true },
     Utiliza3: { type: "string", optional: true },
     Icms: { type: "int", optional: true },
+    //Tabelas: { type: "list", objectType: "Tabela", optional: true },
+    Handle: "int",
+    HandleFilial: { type: "int", optional: true },
+    HandleTrade: { type: "int", optional: true },
+    Plataforma: { type: "int", optional: true },
   },
 
   primaryKey: "Handle",

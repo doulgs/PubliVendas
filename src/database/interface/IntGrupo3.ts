@@ -1,15 +1,15 @@
 import Realm from "realm";
 
 export interface IntGrupo3 {
-  Handle: number;
-  HandleFilial: number | null;
-  HandleTrade: number | null;
   Codigo: string | null;
   Nome: string | null;
   Nome2: string | null;
   Reduzido: string | null;
   Inativo: boolean | null;
   QuantidadeItensComposicao: number | null;
+  Handle: number;
+  HandleFilial: number | null;
+  HandleTrade: number | null;
   Plataforma: number | null;
 }
 

@@ -9,6 +9,7 @@ export interface IntBairro {
   Valor: number | null;
   Ordem: number | null;
   NomeSemAcento: string | null;
+  Descricao: string | null;
   Plataforma: number | null;
 }
 

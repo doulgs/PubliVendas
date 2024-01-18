@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
 import { IntCondicao } from "../database/interface/IntCondicao";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
 async function syncCondicao() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("Condicao");
+  const dadosApi = await obterDadosDaTabelaAPI("Condicao");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
@@ -17,14 +17,14 @@ async function syncCondicao() {
           const createDados = realm.create(
             "CondicaoSchema",
             {
+              Descricao: obj.Descricao,
+              EhDinheiro: obj.EhDinheiro,
+              EhPagamentoOnLine: obj.EhPagamentoOnLine,
+              TipoPagto: obj.TipoPagto,
               Handle: obj.Handle,
               HandleFilial: obj.HandleFilial,
               HandleTrade: obj.HandleTrade,
-              Descricao: obj.Descricao,
-              EhDinheiro: obj.EhDinheiro,
               Plataforma: obj.Plataforma,
-              EhPagamentoOnLine: obj.EhPagamentoOnLine,
-              TipoPagto: obj.TipoPagto,
             },
             Realm.UpdateMode.Modified
           );

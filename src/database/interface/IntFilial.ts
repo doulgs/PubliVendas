@@ -1,9 +1,6 @@
 import Realm from "realm";
 
 export interface IntFilial {
-  Handle: number;
-  HandleFilial: string | null;
-  HandleTrade: number | null;
   franquia: string | null;
   GrupoFilial: string | null;
   Tabela: string | null;
@@ -36,20 +33,20 @@ export interface IntFilial {
   MensagemTaxaEntrega: string | null;
   TipoFrete: string | null;
   LogoByte: string | null;
-  EstaAberto: boolean | null;
+  EstaAberto: number | null;
   Titulo01Cardapio: string | null;
   Texto01Cardapio: string | null;
   Titulo02Cardapio: string | null;
   Texto02Cardapio: string | null;
   ApiKeyHere: string | null;
   ConfigPrecoPizza: string | null;
-  PossuiIntegracao: boolean | null;
+  PossuiIntegracao: number | null;
   TipoAtendimento: number | null;
   HandleTabela: string | null;
   Preco: number | null;
-  PossuiValidacaoEndereco: boolean | null;
+  PossuiValidacaoEndereco: number | null;
   ImagemPadraoPizza: string | null;
-  ObrigatorioEnviarPedidoPeloWhatsApp: boolean | null;
+  ObrigatorioEnviarPedidoPeloWhatsApp: number | null;
   HandleRamoAtividade: string | null;
   PathRelPedidoSowPublisoft: string | null;
   EmailHost: string | null;
@@ -57,25 +54,28 @@ export interface IntFilial {
   EmailSenha: string | null;
   EmailPorta: number | null;
   Timeout: number | null;
-  EmailAtivarSsl: boolean | null;
+  EmailAtivarSsl: number | null;
   MensagemPedidoEmail: string | null;
   LimiteRetirada: number | null;
   IntervaloAgendamento: number | null;
-  UtilizaHorarioAgendamento: boolean | null;
+  UtilizaHorarioAgendamento: number | null;
   HandleFranquia: string | null;
   GatewayPagamento: string | null;
   ChavePublica: string | null;
   ChaveSecreta: string | null;
   ImagemPadraoPizzaByte: string | null;
   PathRelPedidoSowPublisoftByte: string | null;
-  MostarExcecaoPedidoVenda: boolean | null;
+  MostarExcecaoPedidoVenda: number | null;
   LayoutTelaItensSowPublisoft: number | null;
-  PermiteDigitacaoPreco: boolean | null;
-  QuantidadeInteira: boolean | null;
+  PermiteDigitacaoPreco: number | null;
+  QuantidadeInteira: number | null;
   DiasPrevisaoEntrega: number | null;
   QtdAparelhosLiberadosPubliVendas: string | null;
   ChaveApps: string | null;
   Tabelas: string | null;
+  Handle: number;
+  HandleFilial: string | null;
+  HandleTrade: number | null;
   Plataforma: number | null;
 }
 

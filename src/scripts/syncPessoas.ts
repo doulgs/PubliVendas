@@ -1,30 +1,27 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
-import { IntPessoa } from "../database/interface/IntPessoa";
+import { IntPessoas } from "../database/interface/IntPessoas";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
-async function syncPessoa() {
+async function syncPessoas() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("Pessoas");
+  const dadosApi = await obterDadosDaTabelaAPI("Pessoas");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
     const dados = dadosApi?.Data;
 
-    dados.forEach((obj: IntPessoa) => {
+    dados.forEach((obj: IntPessoas) => {
       try {
         realm.write(() => {
           const createDados = realm.create(
-            "PessoaSchema",
+            "PessoasSchema",
             {
-              Handle: obj.Handle,
-              HandleFilial: obj.HandleFilial,
-              HandleTrade: obj.HandleTrade,
-              Plataforma: obj.Plataforma,
               Codigo: obj.Codigo,
               Nome: obj.Nome,
               Fantasia: obj.Fantasia,
               CnpjCpf: obj.CnpjCpf,
+              Insc: obj.Insc,
               Endereco: obj.Endereco,
               Numero: obj.Numero,
               Complemento: obj.Complemento,
@@ -36,27 +33,30 @@ async function syncPessoa() {
               Telefone: obj.Telefone,
               Observacao: obj.Observacao,
               Tipo: obj.Tipo,
-              HandleTabela: obj.HandleTabela,
               Uf: obj.Uf,
+              HandleTabela: obj.HandleTabela,
               HandleUsuario: obj.HandleUsuario,
-              Insc: obj.Insc,
+              HandleCondicao: obj.HandleCondicao,
               Bloqueado: obj.Bloqueado,
               ObservacaoPessoa: obj.ObservacaoPessoa,
-              HandleCondicao: obj.HandleCondicao,
+              Handle: obj.Handle,
+              HandleFilial: obj.HandleFilial,
+              HandleTrade: obj.HandleTrade,
+              Plataforma: obj.Plataforma,
             },
             Realm.UpdateMode.Modified
           );
           //console.log("Sync", `criação do registro --> ${obj.Nome}`);
           if (!successMsg) {
-            successMsg = "Sync Pessoa realizado";
+            successMsg = "Sync Pessoas realizado";
           }
         });
       } catch (error) {
-        console.log("Falha no processo de Sync PessoaSchema -->", error);
+        console.log("Falha no processo de Sync PessoasSchema -->", error);
       }
     });
   }
-  return { MsgPessoa: successMsg };
+  return { MsgPessoas: successMsg };
 }
 
-export { syncPessoa };
+export { syncPessoas };

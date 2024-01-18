@@ -4,11 +4,11 @@ export const IteTabForSchema: ObjectSchema = {
   name: "IteTabForSchema",
 
   properties: {
-    Handle: "int",
-    HandleItem: { type: "int", optional: true },
-    HandleTabela: { type: "int", optional: true },
+    Handle: { type: "int", indexed: true },
+    HandleItem: { type: "int", indexed: true },
+    HandleTabela: { type: "int", indexed: true },
     HandleFormula: { type: "int", optional: true },
-    HandleFilial: { type: "int", optional: true },
+    HandleFilial: { type: "int", indexed: true },
     Preco: { type: "double", optional: true },
   },
 

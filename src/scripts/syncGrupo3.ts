@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
 import { IntGrupo3 } from "../database/interface/IntGrupo3";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
 async function syncGrupo3() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("Grupo3");
+  const dadosApi = await obterDadosDaTabelaAPI("Grupo3");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
@@ -17,15 +17,15 @@ async function syncGrupo3() {
           const createDados = realm.create(
             "Grupo3Schema",
             {
-              Handle: obj.Handle,
-              HandleFilial: obj.HandleFilial,
-              HandleTrade: obj.HandleTrade,
               Codigo: obj.Codigo,
               Nome: obj.Nome,
               Nome2: obj.Nome2,
               Reduzido: obj.Reduzido,
               Inativo: obj.Inativo,
               QuantidadeItensComposicao: obj.QuantidadeItensComposicao,
+              Handle: obj.Handle,
+              HandleFilial: obj.HandleFilial,
+              HandleTrade: obj.HandleTrade,
               Plataforma: obj.Plataforma,
             },
             Realm.UpdateMode.Modified

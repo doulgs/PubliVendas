@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
 import { IntCidade } from "../database/interface/IntCidade";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
 async function syncCidade() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("Cidade");
+  const dadosApi = await obterDadosDaTabelaAPI("Cidade");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
@@ -17,12 +17,12 @@ async function syncCidade() {
           const createDados = realm.create(
             "CidadeSchema",
             {
-              Handle: obj.Handle,
+              UF: obj.UF,
               Nome: obj.Nome,
               Ibge: obj.Ibge,
+              Handle: obj.Handle,
               HandleFilial: obj.HandleFilial,
               HandleTrade: obj.HandleTrade,
-              UF: obj.UF,
               Plataforma: obj.Plataforma,
             },
             Realm.UpdateMode.Modified

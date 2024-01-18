@@ -5,26 +5,25 @@ import api from "../services/api";
 
 type TableName =
   | "User"
-  | "Bairro"
-  | "Cidade"
-  | "Condicao"
-  | "Formula"
   | "Filial"
+  | "Formula"
+  | "Tabela"
   | "Grupo1"
-  | "Grupo2Excecao"
   | "Grupo2"
   | "Grupo3"
-  | "GrupoExcecao"
-  | "ItemExcecaoAuto"
+  | "Condicao"
+  | "Unidade"
   | "Item"
-  | "IteTabFor"
-  | "PessoaItem"
-  | "Pessoas"
+  | "GrupoExcecao"
+  | "Grupo2Excecao"
+  | "ItemExcecaoAuto"
   | "PromocaoItem"
-  | "Tabela"
-  | "Unidade";
+  | "Cidade"
+  | "Bairro"
+  | "Pessoas"
+  | "PessoasItens";
 
-async function obterDadosDaTabela(Table: TableName) {
+async function obterDadosDaTabelaAPI(Table: TableName) {
   try {
     const realm = await getRealm();
     const MyToken = await obterToken();
@@ -44,4 +43,4 @@ async function obterDadosDaTabela(Table: TableName) {
   }
 }
 
-export { obterDadosDaTabela };
+export { obterDadosDaTabelaAPI };

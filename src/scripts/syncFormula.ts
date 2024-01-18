@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
 import { IntFormula } from "../database/interface/IntFormula";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
 async function syncFormula() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("Formula");
+  const dadosApi = await obterDadosDaTabelaAPI("Formula");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
@@ -17,10 +17,6 @@ async function syncFormula() {
           const createDados = realm.create(
             "FormulaSchema",
             {
-              Handle: obj.Handle,
-              HandleFilial: obj.HandleFilial,
-              HandleTrade: obj.HandleTrade,
-              Plataforma: obj.Plataforma,
               Descricao: obj.Descricao,
               Fator11: obj.Fator11,
               Fator12: obj.Fator12,
@@ -45,6 +41,10 @@ async function syncFormula() {
               Utiliza2: obj.Utiliza2,
               Utiliza3: obj.Utiliza3,
               Icms: obj.Icms,
+              Handle: obj.Handle,
+              HandleFilial: obj.HandleFilial,
+              HandleTrade: obj.HandleTrade,
+              Plataforma: obj.Plataforma,
             },
             Realm.UpdateMode.Modified
           );

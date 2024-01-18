@@ -1,17 +1,17 @@
 import { ObjectSchema } from "realm";
 
-export const PessoaSchema: ObjectSchema = {
-  name: "PessoaSchema",
+export const PessoasSchema: ObjectSchema = {
+  name: "PessoasSchema",
 
   properties: {
-    Handle: "int",
-    HandleFilial: { type: "int", optional: true },
-    HandleTrade: { type: "int", optional: true },
-    Plataforma: { type: "int", optional: true },
+    //Condicao: { type: "Condicao", optional: true },
+    //Tabela: { type: "Tabela", optional: true },
+    //Usuario: { type: "Usuario", optional: true },
     Codigo: { type: "int", optional: true },
     Nome: { type: "string", optional: true },
     Fantasia: { type: "string", optional: true },
     CnpjCpf: { type: "string", optional: true },
+    Insc: { type: "string", optional: true },
     Endereco: { type: "string", optional: true },
     Numero: { type: "int", optional: true },
     Complemento: { type: "string", optional: true },
@@ -23,13 +23,17 @@ export const PessoaSchema: ObjectSchema = {
     Telefone: { type: "string", optional: true },
     Observacao: { type: "string", optional: true },
     Tipo: { type: "string", optional: true },
-    HandleTabela: { type: "int", optional: true },
     Uf: { type: "string", optional: true },
+    HandleTabela: { type: "int", optional: true },
     HandleUsuario: { type: "int", optional: true },
-    Insc: { type: "string", optional: true },
-    Bloqueado: { type: "int", optional: true },
-    ObservacaoPessoa: { type: "string", optional: true },
     HandleCondicao: { type: "int", optional: true },
+    Bloqueado: { type: "bool", optional: true },
+    ObservacaoPessoa: { type: "string", optional: true },
+    //Tabelas: { type: "list", objectType: "Tabela", optional: true },
+    Handle: "int",
+    HandleFilial: { type: "int", optional: true },
+    HandleTrade: { type: "int", optional: true },
+    Plataforma: { type: "int", optional: true },
   },
 
   primaryKey: "Handle",

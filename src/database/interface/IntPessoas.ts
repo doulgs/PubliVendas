@@ -1,16 +1,13 @@
 import Realm from "realm";
 
-export interface IntPessoa {
-  Handle: number;
-  HandleFilial: number | null;
-  HandleTrade: number | null;
-  Plataforma: number | null;
+export interface IntPessoas {
   Codigo: number | null;
   Nome: string | null;
   Fantasia: string | null;
   CnpjCpf: string | null;
+  Insc: string | null;
   Endereco: string | null;
-  Numero: number | null;
+  Numero: string | null;
   Complemento: string | null;
   Proximidade: string | null;
   Bairro: string | null;
@@ -20,13 +17,16 @@ export interface IntPessoa {
   Telefone: string | null;
   Observacao: string | null;
   Tipo: string | null;
-  HandleTabela: number | null;
   Uf: string | null;
+  HandleTabela: number | null;
   HandleUsuario: number | null;
-  Insc: string | null;
-  Bloqueado: number | null;
-  ObservacaoPessoa: string | null;
   HandleCondicao: number | null;
+  Bloqueado: boolean | null;
+  ObservacaoPessoa: string | null;
+  Handle: number;
+  HandleFilial: number | null;
+  HandleTrade: number | null;
+  Plataforma: number | null;
 }
 
-export type IntPessoaObject = IntPessoa & Realm.Object;
+export type IntPessoasObject = IntPessoas & Realm.Object;

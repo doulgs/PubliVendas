@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
 import { IntItemExcecaoAuto } from "../database/interface/IntItemExcecaoAuto";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
 async function syncItemExcecaoAuto() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("ItemExcecaoAuto");
+  const dadosApi = await obterDadosDaTabelaAPI("ItemExcecaoAuto");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
@@ -17,12 +17,12 @@ async function syncItemExcecaoAuto() {
           const createDados = realm.create(
             "ItemExcecaoAutoSchema",
             {
-              Handle: obj.Handle,
-              HandleFilial: obj.HandleFilial,
               HandleItem: obj.HandleItem,
               HandleExcecao: obj.HandleExcecao,
-              HandleTrade: obj.HandleTrade,
               Quantidade: obj.Quantidade,
+              Handle: obj.Handle,
+              HandleFilial: obj.HandleFilial,
+              HandleTrade: obj.HandleTrade,
               Plataforma: obj.Plataforma,
             },
             Realm.UpdateMode.Modified

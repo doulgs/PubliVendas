@@ -1,11 +1,14 @@
 import { ObjectSchema } from "realm";
 
-export const UnidadeSchema: ObjectSchema = {
-  name: "UnidadeSchema",
+export const PessoasItensSchema: ObjectSchema = {
+  name: "PessoasItensSchema",
 
   properties: {
-    Sigla: { type: "string", optional: true },
-    Descricao: { type: "string", optional: true },
+    //Item: { type: "Item", optional: true },
+    //Pessoa: { type: "Pessoa", optional: true },
+    ItemHandle: { type: "int", optional: true },
+    PessoaHandle: { type: "int", optional: true },
+    Preco: { type: "double", optional: true },
     //Tabelas: { type: "list", objectType: "Tabela", optional: true },
     Handle: "int",
     HandleFilial: { type: "int", optional: true },

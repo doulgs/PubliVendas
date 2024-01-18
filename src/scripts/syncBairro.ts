@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 import { IntBairro } from "../database/interface/IntBairro";
 
 async function syncBairro() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("Bairro");
+  const dadosApi = await obterDadosDaTabelaAPI("Bairro");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
@@ -25,6 +25,7 @@ async function syncBairro() {
               Valor: obj.Valor,
               Ordem: obj.Ordem,
               NomeSemAcento: obj.NomeSemAcento,
+              Descricao: obj.Descricao,
               Plataforma: obj.Plataforma,
             },
             Realm.UpdateMode.Modified

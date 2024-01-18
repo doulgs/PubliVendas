@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
 import { IntItem } from "../database/interface/IntItem";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
 async function syncItem() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("Item");
+  const dadosApi = await obterDadosDaTabelaAPI("Item");
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
@@ -17,13 +17,11 @@ async function syncItem() {
           const createDados = realm.create(
             "ItemSchema",
             {
-              Handle: obj.Handle,
-              HandleFilial: obj.HandleFilial,
               HandleGrupo1: obj.HandleGrupo1,
               HandleGrupo2: obj.HandleGrupo2,
               HandleGrupo3: obj.HandleGrupo3,
               HandleUnidade: obj.HandleUnidade,
-              HandleTrade: obj.HandleTrade,
+              ClassificacaoMarketPlace: obj.ClassificacaoMarketPlace,
               Codigo: obj.Codigo,
               Descricao: obj.Descricao,
               Complemento: obj.Complemento,
@@ -31,15 +29,22 @@ async function syncItem() {
               Foto: obj.Foto,
               PrecoValor: obj.PrecoValor,
               Composicao: obj.Composicao,
-              Descinta: obj.Descinta,
+              DescLonga: obj.DescLonga,
               ComposicaoBarra: obj.ComposicaoBarra,
               NaoPermiteDesconto: obj.NaoPermiteDesconto,
               DescricaoDif: obj.DescricaoDif,
-              Plataforma: obj.Plataforma,
               VendaValor: obj.VendaValor,
+              ValorPromocional: obj.ValorPromocional,
               VendaFrete: obj.VendaFrete,
               CustoValor: obj.CustoValor,
-              ClassificacaoMarketPlace: obj.ClassificacaoMarketPlace,
+              Observacao: obj.Observacao,
+              Quantidade: obj.Quantidade,
+              FotoByte: obj.FotoByte,
+              Mark: obj.Mark,
+              Handle: obj.Handle,
+              HandleFilial: obj.HandleFilial,
+              HandleTrade: obj.HandleTrade,
+              Plataforma: obj.Plataforma,
             },
             Realm.UpdateMode.Modified
           );

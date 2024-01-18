@@ -1,11 +1,11 @@
 import Realm from "realm";
 import { getRealm } from "../database/realm";
-import { obterDadosDaTabela } from "../utils/obterDadosDaTabela";
 import { IntUser } from "../database/interface/IntUser";
+import { obterDadosDaTabelaAPI } from "../utils/obterDadosDaTabela";
 
 async function syncUser() {
   const realm = await getRealm();
-  const dadosApi = await obterDadosDaTabela("User");
+  const dadosApi = await obterDadosDaTabelaAPI("User"); // TODO refazer a funcao com outro endPoint User
   let successMsg: string | null = null;
 
   if (dadosApi?.IsValid) {
