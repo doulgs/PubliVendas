@@ -9,7 +9,8 @@ interface Props {
 }
 
 const Products: React.FC<Props> = ({ data }) => {
-  const resultado: number = data.PrecoValor !== null ? data.PrecoValor : 0;
+  const resultado: number = data.VendaValor !== null ? data.VendaValor : 0;
+
   return (
     <View style={styles.container}>
       <Card style={{ backgroundColor: "#ffffff" }}>
@@ -18,11 +19,11 @@ const Products: React.FC<Props> = ({ data }) => {
         </Card.Content>
         <Card.Content style={styles.content}>
           <Text style={styles.subtitle}>Grupos2</Text>
-          <Text style={styles.title}>{data.Codigo}</Text>
+          <Text style={styles.title}>{data.Grupo2Nome}</Text>
         </Card.Content>
         <Card.Content style={styles.content}>
           <Text style={styles.subtitle}>UNIDADE</Text>
-          <Text style={styles.title}>{data.HandleUnidade}</Text>
+          <Text style={styles.title}>{data.Unidade}</Text>
         </Card.Content>
 
         <View
@@ -38,6 +39,7 @@ const Products: React.FC<Props> = ({ data }) => {
           >
             <Text style={styles.subtitle}>VALOR</Text>
             <Text style={styles.title}>{formatarParaMoeda(resultado)}</Text>
+            {/* <Text style={styles.title}>{data.VendaValor}</Text> */}
           </Card.Content>
           <Card.Content
             style={[styles.content, { flex: 1, borderBottomWidth: 0 }]}

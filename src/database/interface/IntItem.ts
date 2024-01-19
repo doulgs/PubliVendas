@@ -1,6 +1,8 @@
 import Realm from "realm";
 
 export interface IntItem {
+  Grupo2Nome: string | null;
+  Unidade: string | null;
   HandleGrupo1: number | null;
   HandleGrupo2: number | null;
   HandleGrupo3: number | null;

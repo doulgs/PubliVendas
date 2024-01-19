@@ -13,7 +13,6 @@ const ListaGrupos: React.FC = () => {
   const [grupo2, setGrupo2] = useState<IntGrupo2[]>([]);
 
   async function handleNavigationProdutos(handle: number) {
-    console.log(handle);
     navigation.navigate("Produtos", { handle });
   }
 

@@ -6,13 +6,20 @@ import ButtonHelper from "../../Helpers/Button";
 import { executarSync } from "../../scripts/executarSync";
 
 const Pedidos: React.FC = () => {
+  const [loading, setLoading] = React.useState(false);
+  async function minhaFuncaoAssincrona() {
+    setLoading(true);
+    await executarSync();
+    setLoading(false);
+  }
   return (
     <Container>
       <ButtonHelper
         title="Sync"
         colorBackground="#191622"
         colorTitle="#FFF"
-        onPress={executarSync}
+        onPress={minhaFuncaoAssincrona}
+        isLoading={loading}
       />
     </Container>
   );

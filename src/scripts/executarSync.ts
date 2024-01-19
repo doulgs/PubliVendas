@@ -14,11 +14,11 @@ import { syncPessoasItens } from "./syncPessoasItens";
 import { syncPromocaoItem } from "./syncPromocaoItem";
 import { syncTabela } from "./syncTabela";
 import { syncUnidade } from "./syncUnidade";
+import { syncIteTabFor } from "./syncIteTabFor";
 
 async function executarSync() {
   try {
     console.log("Inicializando o Sync");
-
     const { MsgBairro } = await syncBairro();
     const { MsgCidade } = await syncCidade();
     const { MsgCondicao } = await syncCondicao();
@@ -29,6 +29,7 @@ async function executarSync() {
     const { MsgGrupo3 } = await syncGrupo3();
     const { MsgGrupoExcecao } = await syncGrupoExcecao();
     const { MsgIntItem } = await syncItem();
+    const { MsgIteTabFor } = await syncIteTabFor();
     const { MsgItemExcecaoAuto } = await syncItemExcecaoAuto();
     const { MsgPessoas } = await syncPessoas();
     const { MsgPessoasItens } = await syncPessoasItens();
@@ -47,6 +48,7 @@ async function executarSync() {
       MsgGrupo3,
       MsgGrupoExcecao,
       MsgIntItem,
+      MsgIteTabFor,
       MsgItemExcecaoAuto,
       MsgPessoas,
       MsgPessoasItens,

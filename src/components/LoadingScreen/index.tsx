@@ -6,7 +6,7 @@ interface LoadingProps {
 }
 
 const LoadingScreen: React.FC<LoadingProps> = ({
-  message = "Aguarde Carregando Dados...",
+  message = "Aguarde, Carregando Dados...",
 }) => {
   return (
     <View style={styles.container}>

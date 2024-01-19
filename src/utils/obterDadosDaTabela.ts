@@ -14,6 +14,7 @@ type TableName =
   | "Condicao"
   | "Unidade"
   | "Item"
+  | "IteTabFor"
   | "GrupoExcecao"
   | "Grupo2Excecao"
   | "ItemExcecaoAuto"
