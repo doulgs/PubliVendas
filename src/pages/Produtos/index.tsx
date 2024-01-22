@@ -7,11 +7,11 @@ import { propsStack } from "../../routes/Models/app.routesTypes";
 import { useRoute } from "@react-navigation/native";
 import { IntItem } from "../../database/interface/IntItem";
 import { Text } from "react-native-paper";
-import { Products } from "../../components/Products";
 import { IntIteTabFor } from "../../database/interface/IntIteTabFor";
 import { IntUnidade } from "../../database/interface/IntUnidade";
 import { LoadingScreen } from "../../components/LoadingScreen";
 import { IntGrupo2 } from "../../database/interface/IntGrupo2";
+import { Produto } from "../../components/Produto";
 
 type ScreenProps = {
   handle: number;
@@ -73,7 +73,8 @@ const Produtos: React.FC = () => {
       <FlatList
         data={itens}
         keyExtractor={(item) => item.Handle.toString()}
-        renderItem={({ item }) => <Products data={item} />}
+        renderItem={({ item }) => <Produto data={item} />}
+        contentContainerStyle={{ margin: 16 }}
       />
     </Container>
   );

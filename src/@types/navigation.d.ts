@@ -9,6 +9,7 @@ export declare global {
       Clientes: undefined;
       ListaGrupos: undefined;
       Produtos: { handleGrupo2: number };
+      ClienteDetalhe: { handleCliente: number };
       Config: undefined;
     }
   }

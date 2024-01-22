@@ -5,6 +5,9 @@ export type propsNavigationStack = {
   Produtos: {
     handle: number;
   };
+  ClienteDetalhe: {
+    handle: number;
+  };
 };
 
 export type propsStack = NativeStackNavigationProp<propsNavigationStack>;

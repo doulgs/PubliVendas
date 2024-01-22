@@ -8,14 +8,16 @@ interface Props {
   data: IntItem;
 }
 
-const Products: React.FC<Props> = ({ data }) => {
+const Produto: React.FC<Props> = ({ data }) => {
   const resultado: number = data.VendaValor !== null ? data.VendaValor : 0;
 
   return (
     <View style={styles.container}>
       <Card style={{ backgroundColor: "#ffffff" }}>
         <Card.Content style={styles.content}>
-          <Text style={styles.title}>{data.Descricao}</Text>
+          <Text style={styles.title}>
+            {data.Codigo} - {data.Descricao}
+          </Text>
         </Card.Content>
         <Card.Content style={styles.content}>
           <Text style={styles.subtitle}>Grupos2</Text>
@@ -29,9 +31,6 @@ const Products: React.FC<Props> = ({ data }) => {
         <View
           style={{
             flexDirection: "row",
-            // backgroundColor: "#e6e5e9",
-            // borderBottomLeftRadius: 8,
-            // borderBottomRightRadius: 8,
           }}
         >
           <Card.Content
@@ -55,11 +54,11 @@ const Products: React.FC<Props> = ({ data }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 16,
+    marginBottom: 24,
   },
   content: {
     padding: 8,
-    marginVertical: 5,
+    marginVertical: 3,
     borderBottomWidth: 0.5,
     borderBottomColor: "#d7d6dc",
   },
@@ -76,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Products };
+export { Produto };
