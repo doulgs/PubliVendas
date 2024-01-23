@@ -9,16 +9,39 @@ import { Avatar, Card, Text } from "react-native-paper";
 import { formatarParaMoeda } from "../../utils/formatarParaMoeda";
 import { IntPessoas } from "../../database/interface/IntPessoas";
 import { useTheme } from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface Props extends TouchableOpacityProps {
   data: IntPessoas;
 }
 
 const Cliente: React.FC<Props> = ({ data, ...rest }) => {
+  const navigation = useNavigation();
   const { colors } = useTheme();
   const labelName = data.Nome?.toUpperCase()
     ? data.Nome.toUpperCase().slice(0, 2)
     : "";
+
+  const handleButtonPress = () => {
+    navigation.navigate("Pedidos");
+  };
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity onPress={handleButtonPress}>
+          <MaterialCommunityIcons
+            name="account-search"
+            size={30}
+            color="white"
+            style={{ marginRight: 20 }}
+          />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
+
   return (
     <TouchableOpacity style={styles.container} {...rest}>
       <Avatar.Text
@@ -28,7 +51,7 @@ const Cliente: React.FC<Props> = ({ data, ...rest }) => {
       />
       <View style={styles.content}>
         <Text numberOfLines={1} style={{ textTransform: "uppercase" }}>
-          {data?.Nome}
+          {data?.Handle} - {data?.Nome}
         </Text>
       </View>
     </TouchableOpacity>
@@ -40,6 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 8,
+    backgroundColor: "#c2c2",
   },
   content: {
     flex: 1,

@@ -25,7 +25,11 @@ function AppRoutes() {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Produtos" component={Produtos} />
-      <Stack.Screen name="ClienteDetalhe" component={ClienteDetalhe} />
+      <Stack.Screen
+        name="ClienteDetalhe"
+        component={ClienteDetalhe}
+        options={{ headerTitle: "Detalhes" }}
+      />
     </Stack.Navigator>
   );
 }

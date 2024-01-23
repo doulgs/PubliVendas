@@ -39,7 +39,6 @@ const Clientes: React.FC = () => {
   }
 
   function handleNavigationDetalheCliente(cliente: IntPessoas) {
-    console.log("Tela-Cliente", cliente);
     navigation.navigate("ClienteDetalhe", { cliente });
   }
 

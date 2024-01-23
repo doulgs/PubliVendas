@@ -10,12 +10,15 @@ type ScreenProps = {
 
 const ClienteDetalhe: React.FC = () => {
   const { cliente } = useRoute().params as ScreenProps;
+  const labelName = cliente.Nome?.toUpperCase()
+    ? cliente.Nome.toUpperCase().slice(0, 2)
+    : "";
 
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
         <Card.Content style={styles.cardAvatar}>
-          <Avatar.Text size={70} label="DS" />
+          <Avatar.Text size={70} label={labelName} />
         </Card.Content>
         <Card.Content>
           <Text style={styles.title}>{cliente.Nome}</Text>
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#FFF",
     marginBottom: 16,
-    width: "90%",
+    width: "97%",
   },
   cardAvatar: {
     alignItems: "center",

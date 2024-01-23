@@ -42,8 +42,9 @@ const Settings: React.FC = ({}) => {
       setDeviceId(uniqueId);
       const Plataforma = Device.osName;
       setPlataforma(Plataforma);
-      const Modelo = Device.deviceName;
+      const Modelo = Device.modelName;
       setModelo(Modelo);
+
       const Versao = Device.osVersion;
       setVersao(Versao);
     }
@@ -73,7 +74,7 @@ const Settings: React.FC = ({}) => {
       </ContentTexto>
       <ContentTexto>
         <TextHelper>Plataforma:</TextHelper>
-        <Texto>{plataforma}</Texto>
+        <Texto>Android</Texto>
       </ContentTexto>
       <ContentTexto>
         <TextHelper>Modelo:</TextHelper>

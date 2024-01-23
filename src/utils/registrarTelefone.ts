@@ -24,7 +24,7 @@ async function registrarTelefone({
         ChaveApps: activationKey,
         UUID: deviceId,
         Modelo: modelo,
-        Dispositivo: `${plataforma}-${versao}`,
+        Dispositivo: `Android-${versao}`,
       },
       {
         headers: {
