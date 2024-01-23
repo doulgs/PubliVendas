@@ -6,9 +6,10 @@ import { LoadingScreen } from "../../components/LoadingScreen";
 import { FlatList, ListRenderItemInfo } from "react-native";
 import { Cliente } from "../../components/Cliente";
 import { useNavigation } from "@react-navigation/native";
+import { propsStack } from "../../routes/Models/app.routesTypes";
 
 const Clientes: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<propsStack>();
   const [pessoas, setPessoas] = useState<IntPessoas[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -37,15 +38,16 @@ const Clientes: React.FC = () => {
     return <LoadingScreen />;
   }
 
-  function handleNavigationDetalheCliente(handleCliente: number) {
-    navigation.navigate("ClienteDetalhe", { handleCliente });
+  function handleNavigationDetalheCliente(cliente: IntPessoas) {
+    console.log("Tela-Cliente", cliente);
+    navigation.navigate("ClienteDetalhe", { cliente });
   }
 
   function renderizarClientes({ item }: ListRenderItemInfo<IntPessoas>) {
     return (
       <Cliente
         data={item}
-        onPress={() => handleNavigationDetalheCliente(item.Handle)}
+        onPress={() => handleNavigationDetalheCliente(item)}
       />
     );
   }

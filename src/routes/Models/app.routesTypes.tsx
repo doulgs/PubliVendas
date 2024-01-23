@@ -1,4 +1,5 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { IntPessoas } from "../../database/interface/IntPessoas";
 
 export type propsNavigationStack = {
   Inicio: undefined;
@@ -6,7 +7,7 @@ export type propsNavigationStack = {
     handle: number;
   };
   ClienteDetalhe: {
-    handle: number;
+    cliente: IntPessoas;
   };
 };
 

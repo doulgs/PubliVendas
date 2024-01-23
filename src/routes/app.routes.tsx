@@ -2,9 +2,10 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { propsNavigationStack } from "./Models/app.routesTypes";
 
+import { useTheme } from "styled-components/native";
+
 import DrawerScreens from "./drawer";
 import Produtos from "../pages/Produtos";
-import { useTheme } from "styled-components/native";
 import ClienteDetalhe from "../components/ClienteDetalhe";
 
 const Stack = createNativeStackNavigator<propsNavigationStack>();
