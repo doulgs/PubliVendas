@@ -1,0 +1,38 @@
+{
+  "Data": "2022-12-13T19:29:12.403Z",
+  "DataDigitacao": "2022-12-13T19:29:12.403Z",
+  "DataEntrega": "2022-12-13T19:29:12.403Z",
+  "HandlePessoa": 15184,
+  "HandleUsuario": 15,
+  "HandleCondicao": 1486,
+  "TotalItens": 30.00,
+  "DescontoPercentual": 0,
+  "TotalDesconto": 0,
+  "ValorFrete": 15.00,
+  "Total": 45.00,
+  "Obs": "Teste",
+  "HandleTabela": 74,
+  "Situacao": "Finalizado" | "Em Digitação",
+  "Itens": [
+    {
+      "HandleItem": 24763,
+      "ItemComplemento": "Teste",
+      "ItemComplementoOriginal": "",
+      "ItemDescricao": "Teste Descricao",
+      "Item.Handle": 24763,
+      "Item.HandleUnidade": 302,
+      "Item.HandleGrupo1": 791,
+      "Item.HandleGrupo2": 1447,
+      "Item.HandleGrupo3": 281,
+      "quatidadeinteira": "",
+      "ItemValor": 30.00,
+      "ItemValorOriginal": 30.00,
+      "ItemSubtotal": 30.00,
+      "DescontoPercentual": 0,
+      "ItemDesconto": 0,
+      "ItemValorAcrescimo": 0,
+      "ItemTotal": 30.00,
+      "Observacao": "Teste"
+    }
+  ]
+}

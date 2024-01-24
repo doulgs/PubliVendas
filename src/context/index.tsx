@@ -5,12 +5,14 @@ import { obterToken } from "../utils/obterToken";
 import { registrarTelefone } from "../utils/registrarTelefone";
 import { criptografarParaMD5 } from "../utils/criptografarParaMD5";
 import { useNavigation } from "@react-navigation/native";
+import { IntPessoas } from "../database/interface/IntPessoas";
 
 interface AuthContextProps {
   user: UserProps | null;
   isAuthenticated: boolean;
   isLoading: boolean;
   registerMobile: Function;
+  insertPessoa: Function;
   signIn: Function;
   signOut: Function;
 }
@@ -158,6 +160,21 @@ export const AuthProvaider = ({ children }: any) => {
     setUser(null);
   }
 
+  async function insertPessoa() {
+    const realm = await getRealm();
+    try {
+      realm.write(() => {
+        const createdPessoaRealm = realm.create("PessoasSchema", {
+          Handle: 12,
+          Nome: "Douglas Teste2",
+        });
+      });
+      console.log("Pessoa Registrada com sucesso");
+    } catch (error) {
+      console.log("Erro na criação do registro de Usuario -->", error);
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -166,6 +183,7 @@ export const AuthProvaider = ({ children }: any) => {
         user,
         isAuthenticated: !!user,
         isLoading,
+        insertPessoa,
         signOut,
       }}
     >

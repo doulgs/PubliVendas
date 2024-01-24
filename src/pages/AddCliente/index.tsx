@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   Container,
@@ -7,7 +7,7 @@ import {
   HeaderButton,
   ButtonText,
 } from "./styles";
-import { Alert } from "react-native";
+import { useAuth } from "../../context";
 
 interface Inputs {
   nome: string;
@@ -27,6 +27,7 @@ interface Inputs {
 }
 
 const AddCliente: React.FC = () => {
+  const { insertPessoa } = useAuth();
   const navigation = useNavigation();
   const [inputs, setInputs] = useState<Inputs>({
     nome: "",
@@ -48,7 +49,7 @@ const AddCliente: React.FC = () => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <HeaderButton onPress={handleSaveCliente}>
+        <HeaderButton onPress={() => handleSubmit()}>
           <ButtonText>Salvar</ButtonText>
         </HeaderButton>
       ),
@@ -59,17 +60,8 @@ const AddCliente: React.FC = () => {
     setInputs((prevInputs) => ({ ...prevInputs, [field]: value }));
   };
 
-  const handleSaveCliente = () => {
-    console.log(inputs);
-    for (const key in inputs) {
-      if (
-        inputs[key as keyof Inputs] === "" ||
-        inputs[key as keyof Inputs] === null
-      ) {
-        Alert.alert("Alerta", `O campo ${key} não pode estar vazio.`);
-        return;
-      }
-    }
+  const handleSubmit = async () => {
+    await insertPessoa();
     navigation.navigate("Clientes");
   };
 
