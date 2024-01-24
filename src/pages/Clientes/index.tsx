@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import { TouchableOpacity, View } from "react-native";
 import { getRealm } from "../../database/realm";
 import { IntPessoas } from "../../database/interface/IntPessoas";
-import { Container } from "./styles";
+import { Container, Content } from "./styles";
 import { LoadingScreen } from "../../components/LoadingScreen";
-import { FlatList, ListRenderItemInfo } from "react-native";
+import { FlatList } from "react-native";
 import { Cliente } from "../../components/Cliente";
 import { useNavigation } from "@react-navigation/native";
 import { propsStack } from "../../routes/Models/app.routesTypes";
+import { FlashList } from "@shopify/flash-list";
+import { Button } from "react-native-paper";
 
 const Clientes: React.FC = () => {
   const navigation = useNavigation<propsStack>();
@@ -14,8 +17,8 @@ const Clientes: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   const recuperarPessoas = async () => {
-    const realm = await getRealm();
     try {
+      const realm = await getRealm();
       const result = realm.objects<IntPessoas>("PessoasSchema").sorted("Nome");
       setPessoas(Array.from(result));
     } catch (error) {
@@ -25,39 +28,35 @@ const Clientes: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    const carregarDados = async () => {
-      setLoading(true);
-      await recuperarPessoas();
-    };
+  const handleNavigationDetalheCliente = (cliente: IntPessoas) => {
+    navigation.navigate("ClienteDetalhe", { cliente });
+  };
 
+  const renderizarClientes = ({ item }: { item: IntPessoas }) => (
+    <Cliente data={item} onPress={() => handleNavigationDetalheCliente(item)} />
+  );
+
+  const carregarDados = async () => {
+    setLoading(true);
+    await recuperarPessoas();
+  };
+
+  useEffect(() => {
     carregarDados();
-  }, []); // O array vazio indica que esse efeito só deve ser executado quando o componente é montado
+  }, []);
 
   if (loading) {
     return <LoadingScreen />;
   }
 
-  function handleNavigationDetalheCliente(cliente: IntPessoas) {
-    navigation.navigate("ClienteDetalhe", { cliente });
-  }
-
-  function renderizarClientes({ item }: ListRenderItemInfo<IntPessoas>) {
-    return (
-      <Cliente
-        data={item}
-        onPress={() => handleNavigationDetalheCliente(item)}
-      />
-    );
-  }
-
   return (
     <Container>
-      <FlatList
+      <Content></Content>
+      <FlashList
         data={pessoas}
         keyExtractor={(item) => item.Handle.toString()}
         renderItem={renderizarClientes}
-        contentContainerStyle={{ marginHorizontal: 8 }}
+        estimatedItemSize={200}
       />
     </Container>
   );

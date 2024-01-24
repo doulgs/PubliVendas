@@ -7,6 +7,7 @@ import { useTheme } from "styled-components/native";
 import DrawerScreens from "./drawer";
 import Produtos from "../pages/Produtos";
 import ClienteDetalhe from "../components/ClienteDetalhe";
+import AddCliente from "../pages/AddCliente";
 
 const Stack = createNativeStackNavigator<propsNavigationStack>();
 
@@ -29,6 +30,13 @@ function AppRoutes() {
         name="ClienteDetalhe"
         component={ClienteDetalhe}
         options={{ headerTitle: "Detalhes" }}
+      />
+      <Stack.Screen
+        name="AddCliente"
+        component={AddCliente}
+        options={{
+          headerTitle: "Novo Cliente",
+        }}
       />
     </Stack.Navigator>
   );

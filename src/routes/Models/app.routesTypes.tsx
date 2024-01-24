@@ -9,6 +9,7 @@ export type propsNavigationStack = {
   ClienteDetalhe: {
     cliente: IntPessoas;
   };
+  AddCliente: undefined;
 };
 
 export type propsStack = NativeStackNavigationProp<propsNavigationStack>;

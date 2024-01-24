@@ -11,6 +11,7 @@ export declare global {
       Produtos: { handleGrupo2: number };
       ClienteDetalhe: { handleCliente: number };
       Config: undefined;
+      AddCliente: undefined;
     }
   }
 }

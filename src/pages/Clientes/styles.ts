@@ -5,3 +5,4 @@ export const Container = styled.View`
   padding: 16px 8px 0px 8px;
   background-color: ${(props) => props.theme.colors.Background[50]};
 `;
+export const Content = styled.View``;

@@ -30,7 +30,7 @@ export const THEME = {
   },
   colorBase: {
     Black: "#121212",
-    White: "#ffffff",
+    White: "#FAFAFA",
 
     Success: "#4caf50",
     Info: "#0288d1",
