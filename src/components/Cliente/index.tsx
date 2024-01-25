@@ -4,9 +4,10 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableOpacityProps,
+  Text,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Avatar, Text } from "react-native-paper";
+import { Avatar } from "react-native-paper";
 import { IntPessoas } from "../../database/interface/IntPessoas";
 import { useTheme } from "styled-components/native";
 

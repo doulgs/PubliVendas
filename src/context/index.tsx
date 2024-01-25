@@ -6,7 +6,6 @@ import { registrarTelefone } from "../utils/registrarTelefone";
 import { criptografarParaMD5 } from "../utils/criptografarParaMD5";
 import { useNavigation } from "@react-navigation/native";
 import { IntPessoas } from "../database/interface/IntPessoas";
-import { Inputs } from "../pages/AddCliente";
 import { gerarHandle } from "../utils/gerarHandle";
 
 interface AuthContextProps {
@@ -14,7 +13,7 @@ interface AuthContextProps {
   isAuthenticated: boolean;
   isLoading: boolean;
   registerMobile: Function;
-  insertPessoa: Function;
+  cadastrarCliente: Function;
   signIn: Function;
   signOut: Function;
 }
@@ -162,15 +161,14 @@ export const AuthProvaider = ({ children }: any) => {
     setUser(null);
   }
 
-  async function insertPessoa(data: Inputs) {
+  async function cadastrarCliente() {
     const MyHandle = await gerarHandle("PessoasSchema");
     const realm = await getRealm();
-    console.log(data);
     try {
       realm.write(() => {
         const createdPessoaRealm = realm.create("PessoasSchema", {
           Handle: MyHandle,
-          Nome: data.nome,
+          Nome: "",
         });
       });
       console.log("Pessoa Registrada com sucesso");
@@ -187,7 +185,7 @@ export const AuthProvaider = ({ children }: any) => {
         user,
         isAuthenticated: !!user,
         isLoading,
-        insertPessoa,
+        cadastrarCliente,
         signOut,
       }}
     >
