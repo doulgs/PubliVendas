@@ -31,7 +31,7 @@ export const gerarHandle = async (Table: NomeTabela): Promise<number> => {
 
     // Se não houver nenhum registro na tabela, retornar 10 como o primeiro handle
     if (maiorHandle === undefined) {
-      return -1;
+      return 1;
     }
 
     return maiorHandle + 1;

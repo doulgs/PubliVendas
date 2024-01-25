@@ -6,6 +6,8 @@ import { registrarTelefone } from "../utils/registrarTelefone";
 import { criptografarParaMD5 } from "../utils/criptografarParaMD5";
 import { useNavigation } from "@react-navigation/native";
 import { IntPessoas } from "../database/interface/IntPessoas";
+import { Inputs } from "../pages/AddCliente";
+import { gerarHandle } from "../utils/gerarHandle";
 
 interface AuthContextProps {
   user: UserProps | null;
@@ -160,13 +162,15 @@ export const AuthProvaider = ({ children }: any) => {
     setUser(null);
   }
 
-  async function insertPessoa() {
+  async function insertPessoa(data: Inputs) {
+    const MyHandle = await gerarHandle("PessoasSchema");
     const realm = await getRealm();
+    console.log(data);
     try {
       realm.write(() => {
         const createdPessoaRealm = realm.create("PessoasSchema", {
-          Handle: 12,
-          Nome: "Douglas Teste2",
+          Handle: MyHandle,
+          Nome: data.nome,
         });
       });
       console.log("Pessoa Registrada com sucesso");

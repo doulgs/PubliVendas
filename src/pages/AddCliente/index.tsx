@@ -9,7 +9,7 @@ import {
 } from "./styles";
 import { useAuth } from "../../context";
 
-interface Inputs {
+export interface Inputs {
   nome: string;
   fantasia: string;
   cpfCnpj: string;
@@ -49,7 +49,7 @@ const AddCliente: React.FC = () => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <HeaderButton onPress={() => handleSubmit()}>
+        <HeaderButton onPress={() => handleSubmit(inputs)}>
           <ButtonText>Salvar</ButtonText>
         </HeaderButton>
       ),
@@ -60,9 +60,9 @@ const AddCliente: React.FC = () => {
     setInputs((prevInputs) => ({ ...prevInputs, [field]: value }));
   };
 
-  const handleSubmit = async () => {
-    await insertPessoa();
-    navigation.navigate("Clientes");
+  const handleSubmit = async (inputs: Inputs) => {
+    //await insertPessoa(data);
+    //navigation.navigate("Clientes");
   };
 
   return (

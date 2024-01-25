@@ -35,7 +35,7 @@ function AppRoutes() {
         name="AddCliente"
         component={AddCliente}
         options={{
-          headerTitle: "Novo Cliente",
+          headerTitle: "Cadastro de Cliente",
         }}
       />
     </Stack.Navigator>

@@ -18,7 +18,11 @@ export const InputText = styled.TextInput`
   padding: 10px;
 `;
 
-export const HeaderButton = styled.TouchableOpacity``;
+export const HeaderButton = styled.TouchableOpacity`
+  background-color: ${(props) => props.theme.colors.Secondary};
+  border-radius: 8px;
+  padding: 4px 16px 4px 16px;
+`;
 
 export const ButtonText = styled.Text`
   color: ${(props) => props.theme.colorBase.White};
