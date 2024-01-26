@@ -1,30 +1,45 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
-import { StyleSheet } from "react-native";
+import { FAB, Portal, PaperProvider } from "react-native-paper";
 import { Container } from "./styles";
-import ButtonHelper from "../../Helpers/Button";
-import { executarSync } from "../../scripts/executarSync";
 
-const Pedidos: React.FC = () => {
-  const [loading, setLoading] = React.useState(false);
-  async function minhaFuncaoAssincrona() {
-    setLoading(true);
-    await executarSync();
-    setLoading(false);
-  }
+const Pedido = () => {
+  const [state, setState] = React.useState({ open: false });
+  const onStateChange = ({ open }: any) => setState({ open });
+  const { open } = state;
+
   return (
-    <Container>
-      <ButtonHelper
-        title="Sync"
-        colorBackground="#191622"
-        colorTitle="#FFF"
-        onPress={minhaFuncaoAssincrona}
-        isLoading={loading}
-      />
-    </Container>
+    <PaperProvider>
+      <Container></Container>
+      <Portal>
+        <FAB.Group
+          color="#FFF"
+          backdropColor="transparent"
+          fabStyle={{ backgroundColor: "#0A3750" }}
+          open={open}
+          visible
+          icon={"apps"}
+          actions={[
+            {
+              icon: "sync",
+              label: "Sync",
+              onPress: () => console.log("Pressed star"),
+            },
+            {
+              icon: "account-multiple",
+              label: "Clientes",
+              onPress: () => console.log("Pressed star"),
+            },
+            {
+              icon: "clipboard-text-outline",
+              label: "Produtos",
+              onPress: () => console.log("Pressed star"),
+            },
+          ]}
+          onStateChange={onStateChange}
+        />
+      </Portal>
+    </PaperProvider>
   );
 };
 
-const styles = StyleSheet.create({});
-
-export default Pedidos;
+export default Pedido;

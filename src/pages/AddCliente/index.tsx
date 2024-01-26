@@ -6,25 +6,41 @@ import { InputText } from "../../Helpers/InputText";
 import { useForm, Controller } from "react-hook-form";
 import { View } from "react-native";
 
+export type FormCadClienteProps = {
+  Nome: string;
+  Fantasia: string;
+  CnpjCpf: string;
+  Insc: string;
+  Endereco: string;
+  Bairro: string;
+  CEP: string;
+  Numero: string;
+  Cidade: string;
+  UF: string;
+  Email: string;
+  Telefone: string;
+  Observacao: string;
+};
+
 const AddCliente: React.FC = () => {
   const { cadastrarCliente } = useAuth();
   const navigation = useNavigation();
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit } = useForm<FormCadClienteProps>();
+
+  const onSubmit = async (data: FormCadClienteProps) => {
+    await cadastrarCliente(data);
+    navigation.navigate("Clientes");
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <HeaderButton onPress={() => {}}>
+        <HeaderButton onPress={handleSubmit(onSubmit)}>
           <ButtonText>Salvar</ButtonText>
         </HeaderButton>
       ),
     });
   }, [navigation]);
-
-  const handleSubmitt = async () => {
-    //await insertPessoa(data);
-    //navigation.navigate("Clientes");
-  };
 
   return (
     <Container>
@@ -48,7 +64,7 @@ const AddCliente: React.FC = () => {
           )}
         />
         <Controller
-          name="Cnpj/Cpf"
+          name="CnpjCpf"
           control={control}
           render={({ field: { value, onChange } }) => (
             <InputText
@@ -102,6 +118,7 @@ const AddCliente: React.FC = () => {
                 label={"CEP"}
                 value={value}
                 onChangeText={onChange}
+                keyboardType="number-pad"
                 style={{ flex: 1, backgroundColor: "#f0f4ff" }}
               />
             )}
@@ -114,6 +131,7 @@ const AddCliente: React.FC = () => {
                 label={"Numero"}
                 value={value}
                 onChangeText={onChange}
+                keyboardType="number-pad"
                 style={{ flex: 1, backgroundColor: "#f0f4ff" }}
               />
             )}
@@ -166,6 +184,7 @@ const AddCliente: React.FC = () => {
               label={"Telefone"}
               value={value}
               onChangeText={onChange}
+              keyboardType="number-pad"
             />
           )}
         />

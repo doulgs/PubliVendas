@@ -5,8 +5,8 @@ import { obterToken } from "../utils/obterToken";
 import { registrarTelefone } from "../utils/registrarTelefone";
 import { criptografarParaMD5 } from "../utils/criptografarParaMD5";
 import { useNavigation } from "@react-navigation/native";
-import { IntPessoas } from "../database/interface/IntPessoas";
 import { gerarHandle } from "../utils/gerarHandle";
+import { FormCadClienteProps } from "../pages/AddCliente";
 
 interface AuthContextProps {
   user: UserProps | null;
@@ -161,14 +161,28 @@ export const AuthProvaider = ({ children }: any) => {
     setUser(null);
   }
 
-  async function cadastrarCliente() {
+  async function cadastrarCliente(data: FormCadClienteProps) {
     const MyHandle = await gerarHandle("PessoasSchema");
     const realm = await getRealm();
     try {
       realm.write(() => {
         const createdPessoaRealm = realm.create("PessoasSchema", {
           Handle: MyHandle,
-          Nome: "",
+          Nome: data?.Nome,
+          Fantasia: data?.Fantasia,
+          CnpjCpf: data?.CnpjCpf,
+          Insc: data?.Insc,
+          Endereco: data?.Endereco,
+          Numero: parseInt(data?.Numero),
+          Bairro: data?.Bairro,
+          Cep: data?.CEP,
+          Cidade: data?.Cidade,
+          Email: data?.Email,
+          Telefone: data?.Telefone,
+          Observacao: data?.Observacao,
+          Uf: data?.UF,
+          Tipo: "F",
+          Plataforma: 4,
         });
       });
       console.log("Pessoa Registrada com sucesso");
